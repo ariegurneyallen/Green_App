@@ -25,11 +25,14 @@ export default class MyNavigation extends Component {
 
   constructor(props) {
     super(props);
+
+    var navProps = this.props.navigation.state.params
+
     this.state = {
-      email: "driver1@email.com",
-      password: "password",
+      email: navProps ? navProps.email : "",
+      password: navProps ? navProps.password : "",
       loginButton: true,
-      loginError: " "
+      loginError: navProps ? navProps.messages : ""
     };
   }
 

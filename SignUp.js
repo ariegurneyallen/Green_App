@@ -23,7 +23,8 @@ export default class SignUp extends Component {
       lastName: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      signUpError: ''
     };
   }
 
@@ -49,14 +50,36 @@ export default class SignUp extends Component {
         confirm_success_url: "http://localhost:3000/users/sign_in"
       }),
     })
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+      .then(response => this._handleSignUpResponse(response))
+      .catch(error => this._handleSignUpError(error))
+  };
+
+  _handleSignUpResponse = (response) => {
+    var bodyText = JSON.parse(response._bodyText)
+    if(bodyText.errors){
+      this.setState({signUpError: bodyText.errors.full_messages[0]})
+    }
+    else{
+      this._handleSuccessfulSignUp()
+    }
+  };
+
+  _handleSignUpError = (error) => {
+    console.log("--------Sign Up Error--------")
+    console.log(error)
+  };
+
+  _handleSuccessfulSignUp = () => {
+    this.props.navigation.navigate('Login', { email: this.state.email, password: this.state.password, messages: "A confirmation email was sent to your account." })
   }
 
 
   render() {
     return (
-      <View style={styles.container} >
+      <View style={styles.container}>
+        <Text style={styles.message}>
+          {this.state.signUpError}
+        </Text>
         <TextInput 
           placeholder={"First Name"} 
           value={this.state.firstName}
@@ -109,6 +132,9 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: screenHeight * 0.025,
     alignItems: 'center',
+  },
+  message: {
+    height: screenHeight * 0.05,
   },
   textInputFields: {
     backgroundColor: 'white',
