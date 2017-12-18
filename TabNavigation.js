@@ -36,7 +36,7 @@ export default class TabNavigation extends Component {
     var screenProps = this.props.navigation.state.params
 
     return(
-      <BottomNav screenProps={{navigation: this.props.navigation, email: screenProps.email, accessToken: screenProps.accessToken, client: screenProps.client }}/>
+      <BottomNav screenProps={{navigation: this.props.navigation, email: screenProps.email, accessToken: screenProps.accessToken, client: screenProps.client, expiry: screenProps.expiry }}/>
     )
   }
 }

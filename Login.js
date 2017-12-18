@@ -29,24 +29,24 @@ export default class MyNavigation extends Component {
     var navProps = this.props.navigation.state.params
 
     this.state = {
-      email: navProps ? navProps.email : "",
-      password: navProps ? navProps.password : "",
+      email: navProps ? navProps.email : "driver1@email.com",
+      password: navProps ? navProps.password : "password",
       loginButton: true,
       loginError: navProps ? navProps.messages : ""
     };
   }
 
-  async setAccessToken(accessToken, client) {
+  async setAccessToken(accessToken, client, expiry) {
     try {
       await AsyncStorage.setItem('accessToken', accessToken)
-                        .then(this._navigateToHome(accessToken, client))
+                        .then(this._navigateToHome(accessToken, client, expiry))
     } catch (error) {
       console.log("Error: Could not set access token")
     }
   };
 
-  _navigateToHome = (accessToken, client) => {
-    this.props.navigation.navigate('TabBar', { email: this.state.email, accessToken: accessToken, client: client })
+  _navigateToHome = (accessToken, client, expiry) => {
+    this.props.navigation.navigate('TabBar', { email: this.state.email, accessToken: accessToken, client: client, expiry: expiry })
   };
 
   // Make Below 2 into one function
@@ -124,12 +124,14 @@ export default class MyNavigation extends Component {
       var userInfo = (bodyText.data)
       var accessToken = response.headers.map['access-token'][0]
       var client = response.headers.map.client[0]
-      this.setAccessToken(accessToken, client)
+      var expiry= response.headers.map.expiry[0]
+      this.setAccessToken(accessToken, client, expiry)
       
     }
   };
 
   _handleLoginError = (error) => {
+    // Handle errors appropriately
     console.log(error)
   };
 

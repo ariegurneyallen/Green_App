@@ -10,6 +10,8 @@ import {
   AsyncStorage,
 } from 'react-native';
 
+import OrderIndex from './OrderIndex';
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
@@ -26,15 +28,20 @@ export default class Home extends Component {
 
   render() {
     return (
-      <View>
-        <Text>
-          {}
-        </Text>
+      <View style={styles.container}>
+        <OrderIndex 
+          accessToken={this.props.screenProps.accessToken}
+          client={this.props.screenProps.client}
+          email={this.props.screenProps.email}
+          expiry={this.props.expiry}
+        />
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+  },
 });
