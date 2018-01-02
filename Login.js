@@ -6,9 +6,14 @@ import {
   StyleSheet,
   TextInput,
   Dimensions,
-  Button,
   AsyncStorage,
 } from 'react-native';
+
+import {
+  FormLabel,
+  FormInput,
+  Button,
+} from 'react-native-elements';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -85,7 +90,7 @@ export default class MyNavigation extends Component {
     else{
       this.setState({loginError: bodyText.message})
     }
-  }; 
+  };
 
   _onLoginPressed = () => {
 
@@ -126,7 +131,7 @@ export default class MyNavigation extends Component {
       var client = response.headers.map.client[0]
       var expiry= response.headers.map.expiry[0]
       this.setAccessToken(accessToken, client, expiry)
-      
+
     }
   };
 
@@ -142,48 +147,51 @@ export default class MyNavigation extends Component {
       <View style={styles.container}>
 
         <Text style={styles.title}>
-          {"Green"}
+          {"green"}
         </Text>
 
         <Text style={styles.message}>
           {this.state.loginError}
         </Text>
 
-        <TextInput 
-          placeholder={"Email"} 
+        <FormInput
+          placeholder={"Email"}
           value={this.state.email}
           autoCorrect={false}
           autoCapitalize={"none"}
           onChange={this._onEmailTextChanged}
-          style={styles.loginFields} 
+          style={styles.FormInput}
         />
 
-        <TextInput 
-          placeholder={"Password"} 
+        <FormInput
+          placeholder={"Password"}
           value={this.state.password}
           autoCorrect={false}
           autoCapitalize={"none"}
           onChange={this._onPasswordTextChanged}
-          style={styles.loginFields}
+          style={styles.FormInput}
         />
 
         <Button
           onPress={this._onLoginPressed}
-          color='black'
+          color='white'
           title='Login'
+          marginBottom= '50px'
+          backgroundColor= '#95BCF2'
+          containerViewStyle={{width: '80%', marginLeft: 25}}
         />
+
         <Button
           onPress={this._onSignUpPressed}
           color='black'
           title='Sign Up'
         />
+
         <Button
           onPress={this._onForgotPasswordPressed}
           color='black'
           title='Forgot Password'
         />
-
-
       </View>
     )
   }
@@ -191,9 +199,9 @@ export default class MyNavigation extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     alignItems: 'center',
-    backgroundColor: '#81ee7d',
+    backgroundColor: '#ffffff',
   },
 
   title: {
@@ -201,23 +209,14 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
     fontSize: 40,
     fontWeight: 'bold',
+    color: '#2C3951',
+
   },
 
   message: {
     height: screenHeight * 0.05,
+  //  fontFamily: 'PlayfairDisplay-Regular.ttf',
   },
 
-  loginFields: {
-    backgroundColor: 'white',
-    height: screenHeight * 0.075,
-    width: screenWidth * 0.85,
-    marginBottom: 10,
-    padding: 10,
-    marginRight: 5,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 20,
-  }
 
 });

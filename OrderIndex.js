@@ -34,9 +34,9 @@ export default class OrderIndex extends Component {
   _getOrders = (accessToken) => {
     fetch("http://localhost:3000/api/driver_orders",{
       method: "POST",
-      headers: { 
-        Accept: 'application/json', 
-        'Content-Type': 'application/json', 
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         'access-token': accessToken ? accessToken : this.props.accessToken,
         'token-type': 'Bearer',
         'client': this.props.client,
@@ -70,7 +70,7 @@ export default class OrderIndex extends Component {
   };
 
   render() {
-    var orders = this.state.orders ? 
+    var orders = this.state.orders ?
       <FlatList
         data={this.state.orders}
         keyExtractor={this._keyExtractor}
@@ -88,6 +88,7 @@ export default class OrderIndex extends Component {
 const styles = StyleSheet.create({
   title: {
     fontSize: 25,
+
   },
   container: {
     flex: 1,

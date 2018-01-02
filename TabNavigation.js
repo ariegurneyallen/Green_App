@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TabNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
 
 import Profile from './Profile';
 import Home from './Home'
