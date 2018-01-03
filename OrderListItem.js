@@ -43,9 +43,9 @@ export default class OrderListItem extends Component {
             <KeyValueText label={'Patient'} content={order.patient} />
             {"\n"}
             <KeyValueText label={'Address'} content={order.address} />
-            {"\n"}
-            
-            Items: {items}
+            {/*
+              Items: {items}
+            */}
           </Text>
         </View>
       </TouchableHighlight>
