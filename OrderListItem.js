@@ -37,14 +37,14 @@ export default class OrderListItem extends Component {
         onPress={this._onPress}
       >
         <View style={styles.container}>
-          <KeyValueText label={"mykey"} content={"myvalue"} />
           <Text style={styles.text}>
-            Status: {order.status}
+            <KeyValueText label={'Status'} content={order.status} />
             {"\n"}
-            Patient: {order.patient}
+            <KeyValueText label={'Patient'} content={order.patient} />
             {"\n"}
-            Address: {order.address}
+            <KeyValueText label={'Address'} content={order.address} />
             {"\n"}
+            
             Items: {items}
           </Text>
         </View>
