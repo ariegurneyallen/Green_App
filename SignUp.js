@@ -41,8 +41,8 @@ export default class SignUp extends Component {
     fetch(signUpUrl,{
       method: "POST",
       headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        email : this.state.email, 
+      body: JSON.stringify({
+        email : this.state.email,
         password: this.state.password ,
         password_confirmation: this.state.confirmPassword,
         first_name: this.state.firstName,
@@ -80,43 +80,43 @@ export default class SignUp extends Component {
         <Text style={styles.message}>
           {this.state.signUpError}
         </Text>
-        <TextInput 
-          placeholder={"First Name"} 
+        <TextInput
+          placeholder={"First Name"}
           value={this.state.firstName}
           autoCorrect={false}
           onChange={ (event) => this._onTextChange(event, 'firstName')}
-          style={styles.textInputFields} 
+          style={styles.textInputFields}
         />
-        <TextInput 
-          placeholder={"Last Name"} 
+        <TextInput
+          placeholder={"Last Name"}
           value={this.state.lastName}
           autoCorrect={false}
           onChange={ (event) => this._onTextChange(event, 'lastName')}
-          style={styles.textInputFields} 
+          style={styles.textInputFields}
         />
-        <TextInput 
-          placeholder={"Email"} 
+        <TextInput
+          placeholder={"Email"}
           value={this.state.email}
           autoCorrect={false}
           autoCapitalize={"none"}
           onChange={ (event) => this._onTextChange(event, 'email')}
-          style={styles.textInputFields} 
+          style={styles.textInputFields}
         />
-        <TextInput 
-          placeholder={"Password"} 
+        <TextInput
+          placeholder={"Password"}
           value={this.state.password}
           autoCorrect={false}
           autoCapitalize={"none"}
           onChange={ (event) => this._onTextChange(event, 'password')}
-          style={styles.textInputFields} 
+          style={styles.textInputFields}
         />
-        <TextInput 
-          placeholder={"Confirm Password"} 
+        <TextInput
+          placeholder={"Confirm Password"}
           value={this.state.confirmPassword}
           autoCorrect={false}
           autoCapitalize={"none"}
           onChange={ (event) => this._onTextChange(event, 'confirmPassword')}
-          style={styles.textInputFields} 
+          style={styles.textInputFields}
         />
         <Button
           onPress={this._onSignUpPressed}
@@ -132,20 +132,21 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: screenHeight * 0.025,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   message: {
     height: screenHeight * 0.05,
   },
   textInputFields: {
-    backgroundColor: 'white',
+    backgroundColor: '#f7f7f7',
     height: screenHeight * 0.075,
     width: screenWidth * 0.85,
     marginBottom: 10,
     padding: 10,
     marginRight: 5,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 20,
+    fontSize: 14,
+    // borderWidth: 1,
+    // borderColor: 'black',
+    borderRadius: 10,
   }
 });

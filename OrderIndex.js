@@ -49,6 +49,7 @@ export default class OrderIndex extends Component {
   };
 
   _setOrders = (response) => {
+    console.log(response._bodyText);
     checkToken(response)
     var orders = JSON.parse(response._bodyText)
     this.setState({orders: orders})
@@ -88,12 +89,12 @@ export default class OrderIndex extends Component {
 const styles = StyleSheet.create({
   title: {
     fontSize: 25,
-
   },
+
   container: {
     flex: 1,
     // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+     alignItems: 'center',
+    // backgroundColor: '#ffffff',
   },
 });

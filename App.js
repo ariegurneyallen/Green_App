@@ -23,11 +23,11 @@ import Profile from './Profile';
 import TabNavigation from './TabNavigation';
 
 const Nav = StackNavigator({
-  Login: { 
+  Login: {
     screen: Login,
     navigationOptions: {
       header: null,
-    } 
+    }
   },
   SignUp: {
     screen: SignUp,
@@ -35,7 +35,7 @@ const Nav = StackNavigator({
       headerTitle: "SignUp",
     }
   },
-  TabBar: { 
+  TabBar: {
     screen: TabNavigation,
     navigationOptions: {
       headerTitle: "Green",

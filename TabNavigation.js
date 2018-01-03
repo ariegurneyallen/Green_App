@@ -9,20 +9,22 @@ const BottomNav = TabNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: "Home",
+      title: "Orders",
+      tabBarIcon: ({ tintColor }) => <Icon name="shopping-basket" size={35} color={tintColor} />
     },
   },
   Profile: {
     screen: Profile,
     navigationOptions: {
-      title: "User",
+      title: "Account",
+      tabBarIcon: ({ tintColor }) => <Icon name="perm-identity" size={35} color={tintColor} />
     },
   },
 }, {
   tabBarPosition: 'bottom',
   animationEnabled: true,
   tabBarOptions: {
-    activeTintColor: '#e91e63',
+    activeTintColor: '#95BCF2',
   },
 });
 

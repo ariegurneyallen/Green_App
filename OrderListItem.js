@@ -54,13 +54,10 @@ export default class OrderListItem extends Component {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    borderWidth: 2,
-    backgroundColor: 'white',
+  //  borderWidth: 1,
+    backgroundColor: '#95BCF2',
     overflow: 'visible',
-    padding: 5
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+    padding: 7
   },
   seperator: {
     height: 10

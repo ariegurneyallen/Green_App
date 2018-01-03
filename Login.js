@@ -7,12 +7,14 @@ import {
   TextInput,
   Dimensions,
   AsyncStorage,
+  Button,
+  TouchableHighlight,
 } from 'react-native';
 
 import {
-  FormLabel,
-  FormInput,
-  Button,
+  // FormLabel,
+  // FormInput,
+  // Button,
 } from 'react-native-elements';
 
 const screenWidth = Dimensions.get('window').width;
@@ -147,14 +149,14 @@ export default class MyNavigation extends Component {
       <View style={styles.container}>
 
         <Text style={styles.title}>
-          {"green"}
+          {"Green"}
         </Text>
 
         <Text style={styles.message}>
           {this.state.loginError}
         </Text>
 
-        <FormInput
+        <TextInput
           placeholder={"Email"}
           value={this.state.email}
           autoCorrect={false}
@@ -163,7 +165,7 @@ export default class MyNavigation extends Component {
           style={styles.FormInput}
         />
 
-        <FormInput
+        <TextInput
           placeholder={"Password"}
           value={this.state.password}
           autoCorrect={false}
@@ -174,18 +176,20 @@ export default class MyNavigation extends Component {
 
         <Button
           onPress={this._onLoginPressed}
-          color='white'
+          color='#427cee'
           title='Login'
           marginBottom= '50px'
-          backgroundColor= '#95BCF2'
+          backgroundColor= '#427cee'
           containerViewStyle={{width: '80%', marginLeft: 25}}
         />
+
 
         <Button
           onPress={this._onSignUpPressed}
           color='black'
           title='Sign Up'
         />
+
 
         <Button
           onPress={this._onForgotPasswordPressed}
@@ -206,17 +210,31 @@ const styles = StyleSheet.create({
 
   title: {
     paddingTop: 100,
-    paddingBottom: 100,
+    paddingBottom: 120,
     fontSize: 40,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
     color: '#2C3951',
-
+    fontFamily: 'OpenSans-SemiBold',
   },
 
   message: {
     height: screenHeight * 0.05,
-  //  fontFamily: 'PlayfairDisplay-Regular.ttf',
+    fontFamily: 'OpenSans-Light',
   },
+
+  FormInput: {
+    backgroundColor: '#f7f7f7',
+    height: screenHeight * 0.075,
+    width: screenWidth * 0.85,
+    marginBottom: 10,
+    padding: 10,
+    marginRight: 5,
+    fontSize: 14,
+    // borderWidth: 1,
+    // borderColor: 'black',
+    borderRadius: 10,
+    fontFamily: 'OpenSans-Light',
+  }
 
 
 });

@@ -29,7 +29,7 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <OrderIndex 
+        <OrderIndex
           accessToken={this.props.screenProps.accessToken}
           client={this.props.screenProps.client}
           email={this.props.screenProps.email}
@@ -43,5 +43,6 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginHorizontal: 10,
   },
 });
