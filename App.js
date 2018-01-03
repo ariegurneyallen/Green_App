@@ -32,16 +32,17 @@ const Nav = StackNavigator({
   SignUp: {
     screen: SignUp,
     navigationOptions: {
-      headerTitle: "SignUp",
+      headerTitle: "Sign Up",
     }
   },
   TabBar: {
     screen: TabNavigation,
     navigationOptions: {
-      headerTitle: "Green",
+      headerTitle: "Orders",
       headerLeft: null,
     }
   },
+
 });
 
 // export default class App extends Component<{}> {

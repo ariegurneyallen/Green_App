@@ -79,7 +79,7 @@ export default class OrderIndex extends Component {
       /> : <Text>{"Loading"}</Text>
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Orders</Text>
+        <Text style={styles.title}></Text>
         {orders}
       </View>
     )
