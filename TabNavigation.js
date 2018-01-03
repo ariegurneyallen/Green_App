@@ -10,14 +10,14 @@ const BottomNav = TabNavigator({
     screen: Home,
     navigationOptions: {
       title: "Orders",
-      tabBarIcon: ({ tintColor }) => <Icon name="shopping-basket" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="shopping-basket" size={30} color={tintColor} />
     },
   },
   Profile: {
     screen: Profile,
     navigationOptions: {
       title: "Account",
-      tabBarIcon: ({ tintColor }) => <Icon name="perm-identity" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="perm-identity" size={30} color={tintColor} />
     },
   },
 }, {

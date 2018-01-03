@@ -11,6 +11,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+import KeyValueText from './KeyValueText'
+
+
 export default class OrderListItem extends Component {
 
   constructor(props) {
@@ -34,7 +37,8 @@ export default class OrderListItem extends Component {
         onPress={this._onPress}
       >
         <View style={styles.container}>
-          <Text>
+          <KeyValueText label={"mykey"} content={"myvalue"} />
+          <Text style={styles.text}>
             Status: {order.status}
             {"\n"}
             Patient: {order.patient}
@@ -53,13 +57,20 @@ export default class OrderListItem extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-  //  borderWidth: 1,
     backgroundColor: '#95BCF2',
     overflow: 'visible',
-    padding: 7
+    padding: 7,
+    borderRadius: 10,
   },
+
   seperator: {
     height: 10
+  },
+
+  text: {
+    fontSize: 15,
+    color: '#ffffff',
+    lineHeight: 25
   }
+
 });
