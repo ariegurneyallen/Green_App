@@ -8,6 +8,7 @@ import {
   Dimensions,
   Button,
   AsyncStorage,
+  TouchableHighlight,
 } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
@@ -64,23 +65,29 @@ export default class Profile extends Component {
           {"Profile"}
         </Text>
 
-        <View>
-
-          <Button style={styles.row}
+        <View style={styles.row}>
+          <Button
             onPress={this._onLogoutPressed}
-            color='#427cee'
+            //color='#427cee'
             title='Change email'
-            backgroundColor= '#427cee'
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
-          <Button style={styles.row}
+          <Button
             onPress={this._onLogoutPressed}
-            color='#427cee'
-            title='Logout'
-            backgroundColor= '#427cee'
+            //color='#427cee'
+            title='Change password'
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
         </View>
+        <View style={styles.row}>
+        <Button
+          onPress={this._onLogoutPressed}
+          color='#427cee'
+          title='Logout'
+          containerViewStyle={{width: '80%', marginLeft: 25}}
+        />
+        </View>
+
       </View>
     )
   }
@@ -95,16 +102,19 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    paddingTop: 100,
-    paddingBottom: 10,
-    fontSize: 10,
+    paddingTop: 10,
+    fontSize: 14,
     fontFamily: 'OpenSans-SemiBold',
-    marginLeft: 5
+    marginLeft: 12,
+    marginBottom: 10
   },
 
   row: {
     backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#000000',
+    borderTopWidth: .3,
+    borderBottomWidth: .3,
+    borderColor: '#A9A9A9',
+    marginBottom: 455
   }
+
 });
