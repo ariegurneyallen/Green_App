@@ -8,6 +8,7 @@ import {
   Dimensions,
   Button,
   AsyncStorage,
+  TouchableHighlight,
 } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
@@ -60,14 +61,57 @@ export default class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <Text style={styles.title}>
+          {"Profile"}
+        </Text>
+
+        <View style={styles.row}>
+          <Button
+            onPress={this._onLogoutPressed}
+            //color='#427cee'
+            title='Change email'
+            containerViewStyle={{width: '80%', marginLeft: 25}}
+          />
+          <Button
+            onPress={this._onLogoutPressed}
+            //color='#427cee'
+            title='Change password'
+            containerViewStyle={{width: '80%', marginLeft: 25}}
+          />
+        </View>
+        <Text style={styles.title}>
+            {"Navigation Preference"}
+          </Text>
+          <View style={styles.row}>
+            <Button
+              onPress={this._onLogoutPressed}
+              color='#427cee'
+              title='Google Maps'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            />
+            <Button
+              onPress={this._onLogoutPressed}
+              color='#427cee'
+              title='Apple Maps'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            />
+            <Button
+              onPress={this._onLogoutPressed}
+              color='#427cee'
+              title='Waze'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            />
+          </View>
+
+        <View style={styles.row1}>
         <Button
           onPress={this._onLogoutPressed}
           color='#427cee'
           title='Logout'
-          marginBottom= '50px'
-          backgroundColor= '#427cee'
           containerViewStyle={{width: '80%', marginLeft: 25}}
         />
+        </View>
+
       </View>
     )
   }
@@ -75,9 +119,34 @@ export default class Profile extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f7f7f7',
     flex: 1,
-    paddingTop: 550,
+    paddingTop: 10,
     paddingBottom: 100,
+  },
+
+  title: {
+    paddingTop: 10,
+    fontSize: 14,
+    fontFamily: 'OpenSans-SemiBold',
+    marginLeft: 12,
+    marginBottom: 10
+  },
+
+  row: {
+    backgroundColor: '#ffffff',
+    borderTopWidth: .3,
+    borderBottomWidth: .3,
+    borderColor: '#A9A9A9',
+    marginBottom: 50
+  },
+
+  row1: {
+    backgroundColor: '#ffffff',
+    borderTopWidth: .3,
+    borderBottomWidth: .3,
+    borderColor: '#A9A9A9',
+    marginTop: 200
   }
+
 });
