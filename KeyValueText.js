@@ -22,6 +22,7 @@ export default class KeyValueText extends Component {
     return(
       <Text style={styles.text}>
       <Text style={styles.label}>{this.props.label}</Text>:{this.props.content}
+      {"\n"}
       </Text>
     )
   }

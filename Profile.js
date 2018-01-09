@@ -59,11 +59,14 @@ export default class Profile extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Button
           onPress={this._onLogoutPressed}
-          color='black'
+          color='#427cee'
           title='Logout'
+          marginBottom= '50px'
+          backgroundColor= '#427cee'
+          containerViewStyle={{width: '80%', marginLeft: 25}}
         />
       </View>
     )
@@ -71,5 +74,10 @@ export default class Profile extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    backgroundColor: '#ffffff',
+    flex: 1,
+    paddingTop: 550,
+    paddingBottom: 100,
+  }
 });
