@@ -23,15 +23,11 @@ export default class OrderListItem extends Component {
   }
 
   _onPress = () => {
-
+    this.props.navigation.navigate('OrderShow', { id: this.props.order.id });
   }
 
   render() {
     const order = this.props.order;
-
-    var items = order.items.map((item) => {
-      return <Text>{item.detail}, {item.quantity}</Text>
-    });
 
     return (
       <View>

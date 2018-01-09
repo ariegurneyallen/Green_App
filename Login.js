@@ -9,6 +9,7 @@ import {
   AsyncStorage,
   Button,
   TouchableHighlight,
+  PushNotificationIOS,
 } from 'react-native';
 
 import {
@@ -17,12 +18,14 @@ import {
   // Button,
 } from 'react-native-elements';
 
+import { checkToken, setAccessToken, getAccessToken, setApiInformation, getApiInformation } from './Api';
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const loginUrl = "http://localhost:3000/auth/sign_in"
-const forgotPasswordUrl = "http://localhost:3000/auth/password"
-const forgotPasswordRedirectUrl = "http://localhost:3000/users/sign_in"
+const loginUrl = "http://192.168.1.18:3000/auth/sign_in"
+const forgotPasswordUrl = "http://192.168.1.18:3000/auth/password"
+const forgotPasswordRedirectUrl = "http://192.168.1.18:3000/users/sign_in"
 
 // function loginQuery(email, password) {
 //   return loginUrl + "email=" + email + "&password=" + password;
@@ -43,17 +46,26 @@ export default class MyNavigation extends Component {
     };
   }
 
-  async setAccessToken(accessToken, client, expiry) {
-    try {
-      await AsyncStorage.setItem('accessToken', accessToken)
-                        .then(this._navigateToHome(accessToken, client, expiry))
-    } catch (error) {
-      console.log("Error: Could not set access token")
-    }
-  };
+  componentWillMount() {
+    // PushNotificationIOS.requestPermissions();
+    // PushNotificationIOS.addEventListener('register', function(token){
+    //  console.log('register: ',token)
+    // });
+    // PushNotificationIOS.addEventListener('notification', function(token){
+    //  console.log('notification: ',token)
+    // });
+    // PushNotificationIOS.addEventListener('localNotification', function(token){
+    //  console.log('local notification: ',token)
+    // });
+    // PushNotificationIOS.addEventListener('registrationError', function(token){
+    //  console.log('registrationError: ',token)
+    // });
+  }
 
-  _navigateToHome = (accessToken, client, expiry) => {
-    this.props.navigation.navigate('TabBar', { email: this.state.email, accessToken: accessToken, client: client, expiry: expiry })
+  _navigateToHome = (apiInfo) => {
+    this.props.navigation.navigate('TabBar', 
+      { email: apiInfo['uid'], accessToken: apiInfo['accessToken'], client: apiInfo['client'], expiry: apiInfo['expiry'] }
+    )
   };
 
   // Make Below 2 into one function
@@ -119,6 +131,8 @@ export default class MyNavigation extends Component {
   };
 
   _handleLoginResponse = (response) => {
+    console.log("Login Response")
+    console.log(response)
     var bodyText = JSON.parse(response._bodyText)
     if(bodyText.errors){
       var errors = bodyText.errors
@@ -131,13 +145,21 @@ export default class MyNavigation extends Component {
       var userInfo = (bodyText.data)
       var accessToken = response.headers.map['access-token'][0]
       var client = response.headers.map.client[0]
-      var expiry= response.headers.map.expiry[0]
-      this.setAccessToken(accessToken, client, expiry)
+      var expiry = response.headers.map.expiry[0]
+      api_hash = {}
+      api_hash["client"] = client
+      api_hash["expiry"] = expiry
+      api_hash["accessToken"] = accessToken
+      api_hash["uid"] = this.state.email
+
+
+      setApiInformation(api_hash, this._navigateToHome, this._handleLoginError)
 
     }
   };
 
   _handleLoginError = (error) => {
+    console.log("hanry")
     // Handle errors appropriately
     console.log(error)
   };

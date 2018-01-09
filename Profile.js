@@ -13,7 +13,7 @@ import {
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const logoutUrl = "http://localhost:3000/auth/sign_out"
+const logoutUrl = "http://192.168.0.17:3000/auth/sign_out"
 
 export default class Profile extends Component {
 

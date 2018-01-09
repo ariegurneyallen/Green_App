@@ -34,6 +34,7 @@ export default class Home extends Component {
           client={this.props.screenProps.client}
           email={this.props.screenProps.email}
           expiry={this.props.expiry}
+          navigation={this.props.screenProps.navigation}
         />
       </View>
     )

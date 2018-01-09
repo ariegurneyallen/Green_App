@@ -21,6 +21,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import Profile from './Profile';
 import TabNavigation from './TabNavigation';
+import OrderShow from './OrderShow';
 
 const Nav = StackNavigator({
   Login: {
@@ -41,7 +42,12 @@ const Nav = StackNavigator({
       headerTitle: "Orders",
       headerLeft: null,
     }
-  },  
+  },
+  OrderShow: {
+    screen: OrderShow,
+    navigationOptions: {
+    }
+  },
 });
 
 // export default class App extends Component<{}> {

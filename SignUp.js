@@ -12,7 +12,7 @@ import {
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const signUpUrl = "http://localhost:3000/auth"
+const signUpUrl = "http://192.168.0.17:3000/auth"
 
 export default class SignUp extends Component {
 
