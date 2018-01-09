@@ -64,21 +64,19 @@ export default class Profile extends Component {
           {"Profile"}
         </Text>
 
-        <View style={styles.row}>
+        <View>
 
-          <Button
+          <Button style={styles.row}
             onPress={this._onLogoutPressed}
             color='#427cee'
             title='Change email'
-
             backgroundColor= '#427cee'
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
-          <Button
+          <Button style={styles.row}
             onPress={this._onLogoutPressed}
             color='#427cee'
             title='Logout'
-
             backgroundColor= '#427cee'
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
@@ -90,7 +88,7 @@ export default class Profile extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f7f7f7',
     flex: 1,
     paddingTop: 10,
     paddingBottom: 100,
@@ -105,6 +103,8 @@ const styles = StyleSheet.create({
   },
 
   row: {
-    backgroundColor: '#f7f7f7'
+    backgroundColor: '#ffffff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#000000',
   }
 });

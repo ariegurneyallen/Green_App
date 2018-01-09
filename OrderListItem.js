@@ -35,7 +35,7 @@ export default class OrderListItem extends Component {
 
     return (
       <View>
-      <TouchableHighlight
+      <TouchableHighlight style={styles.corner}
         onPress={this._onPress}
       >
         <View style={styles.container}>
@@ -63,6 +63,11 @@ export default class OrderListItem extends Component {
 }
 
 const styles = StyleSheet.create({
+
+  corner: {
+    borderRadius: 10,
+  },
+
   container: {
     backgroundColor: '#95BCF2',
     overflow: 'visible',
