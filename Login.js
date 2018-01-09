@@ -209,8 +209,9 @@ const styles = StyleSheet.create({
   },
 
   message: {
-    height: screenHeight * 0.05,
+    height: screenHeight * 0.1,
     fontFamily: 'OpenSans-Light',
+    width: screenWidth * 0.85,
   },
 
   FormInput: {

@@ -79,7 +79,31 @@ export default class Profile extends Component {
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
         </View>
-        <View style={styles.row}>
+        <Text style={styles.title}>
+            {"Navigation Preference"}
+          </Text>
+          <View style={styles.row}>
+            <Button
+              onPress={this._onLogoutPressed}
+              color='#427cee'
+              title='Google Maps'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            />
+            <Button
+              onPress={this._onLogoutPressed}
+              color='#427cee'
+              title='Apple Maps'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            />
+            <Button
+              onPress={this._onLogoutPressed}
+              color='#427cee'
+              title='Waze'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            />
+          </View>
+
+        <View style={styles.row1}>
         <Button
           onPress={this._onLogoutPressed}
           color='#427cee'
@@ -114,7 +138,15 @@ const styles = StyleSheet.create({
     borderTopWidth: .3,
     borderBottomWidth: .3,
     borderColor: '#A9A9A9',
-    marginBottom: 455
+    marginBottom: 50
+  },
+
+  row1: {
+    backgroundColor: '#ffffff',
+    borderTopWidth: .3,
+    borderBottomWidth: .3,
+    borderColor: '#A9A9A9',
+    marginTop: 200
   }
 
 });
