@@ -183,14 +183,6 @@ export default class MyNavigation extends Component {
           containerViewStyle={{width: '80%', marginLeft: 25}}
         />
 
-
-        <Button
-          onPress={this._onSignUpPressed}
-          color='black'
-          title='Sign Up'
-        />
-
-
         <Button
           onPress={this._onForgotPasswordPressed}
           color='black'
@@ -212,7 +204,6 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     paddingBottom: 120,
     fontSize: 40,
-    //fontWeight: 'bold',
     color: '#2C3951',
     fontFamily: 'OpenSans-SemiBold',
   },

@@ -13,6 +13,8 @@ import {
 
 import KeyValueText from './KeyValueText'
 
+const screenWidth = Dimensions.get('window').width;
+
 
 export default class OrderListItem extends Component {
 
@@ -39,14 +41,19 @@ export default class OrderListItem extends Component {
         <View style={styles.container}>
           <Text style={styles.text}>
             <KeyValueText label={'Status'} content={order.status} />
-            {"\n"}
+
             <KeyValueText label={'Patient'} content={order.patient} />
-            {"\n"}
+
             <KeyValueText label={'Address'} content={order.address} />
-            {/*
-              Items: {items}
-            */}
+
           </Text>
+
+          <View style={styles.center}>
+            <TouchableHighlight style={styles.button}>
+                <Text style={styles.start} onPress={this._onSignUpPressed}> Start Delivery </Text>
+            </TouchableHighlight>
+          </View>
+
         </View>
       </TouchableHighlight>
       <View style={styles.seperator}></View>
@@ -64,13 +71,32 @@ const styles = StyleSheet.create({
   },
 
   seperator: {
-    height: 10
+    height: 12
   },
 
   text: {
     fontSize: 15,
     color: '#ffffff',
     lineHeight: 25
+  },
+
+  button: {
+    backgroundColor: '#ffffff',
+    padding: 7,
+    borderRadius: 20,
+    width: screenWidth * 0.5,
+    margin: 'auto'
+  },
+
+  start: {
+    color: '#2C3951',
+    fontFamily: 'OpenSans-Bold',
+    fontSize: 18,
+    textAlign: 'center'
+  },
+
+  center: {
+    alignItems: 'center'
   }
 
 });

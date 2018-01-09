@@ -41,8 +41,7 @@ const Nav = StackNavigator({
       headerTitle: "Orders",
       headerLeft: null,
     }
-  },
-
+  },  
 });
 
 // export default class App extends Component<{}> {
