@@ -14,6 +14,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* ReactGreenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReactGreenTests.m */; };
 		043F8CB1335B4899ACFA18E0 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA91472A7E29484D8ED18A5C /* Ionicons.ttf */; };
+		0AAD0CD67ABDE431E307BC42 /* libPods-ReactGreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DCE3E6ABD67DBA897709F6 /* libPods-ReactGreen.a */; };
 		0F09A8F11EEB4E26B740BFCD /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C48F9136B6A24BC78BBC1BDB /* libRNVectorIcons.a */; };
 		106D4341D38B4A35ACBF7536 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC9029BF6354238BE21B396 /* SimpleLineIcons.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -69,7 +70,9 @@
 		B4694E3EAFB241F685438FC6 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AC07FB0E11441B080D1938F /* Zocial.ttf */; };
 		B63976629D2B416E88E0CD40 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B7CD78F4C7C452AA27A67D3 /* Roboto.ttf */; };
 		BA706299C2D74383994A8601 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14FC0D17F141403FA1FE14A5 /* OpenSans-Regular.ttf */; };
+		C17FC153D9AFD490A4F95343 /* libPods-ReactGreen-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE2170B47CAD631507466B5 /* libPods-ReactGreen-tvOSTests.a */; };
 		CA2A33EB9DEA4C6B94A5601E /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D09A64230774EB3B30C6120 /* Foundation.ttf */; };
+		D6ADE5B8A7EC3C34F8134894 /* libPods-ReactGreenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C97C4F1280CAD1D05013DAF9 /* libPods-ReactGreenTests.a */; };
 		E0FA16A414594D12B2B4A99F /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 289DCC48F85B401BB98634B2 /* OpenSans-LightItalic.ttf */; };
 		E11AED9EFCDD4D9AA3EAA022 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0E92CDDE0824722B22DA03E /* PlayfairDisplay-Bold.ttf */; };
 		E63453C2EFB944A3A493D505 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 833F9D5BD1844C7DACA60535 /* rubicon-icon-font.ttf */; };
@@ -390,7 +393,9 @@
 		178F0205B3704633A245EB5A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		1AC07FB0E11441B080D1938F /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		1D4D385B069749C2B2668A5B /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1FB65C700FB23AFBC2D6425C /* Pods-ReactGreen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactGreen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactGreen/Pods-ReactGreen.debug.xcconfig"; sourceTree = "<group>"; };
 		26D4F766D4E145858904C71A /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		27DCE3E6ABD67DBA897709F6 /* libPods-ReactGreen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactGreen.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		280156F513CA4831823D6751 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		289DCC48F85B401BB98634B2 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		292AD9CA7F684EAF8C62DF93 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -400,19 +405,24 @@
 		2ECD5F95C6124ECFB1A0DE01 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		36CC41167F604AFBB90D32ED /* PlayfairDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-BoldItalic.ttf"; path = "../assets/fonts/Playfair_Display/PlayfairDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
 		3722C0AEAFDC46EDA9D2F76D /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		3A5C330397D1AA43B49105D7 /* Pods-ReactGreenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactGreenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactGreenTests/Pods-ReactGreenTests.release.xcconfig"; sourceTree = "<group>"; };
 		3EFED8C8953A445FA62287EB /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		40E34203235F628E3B122D4C /* Pods-ReactGreen-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactGreen-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactGreen-tvOSTests/Pods-ReactGreen-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AAC73D9C1764DFCAB635381 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		50E3F3FDB6A64A13A903F440 /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Black.ttf"; path = "../assets/fonts/Playfair_Display/PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
+		5957BC6F4B7951173072B249 /* Pods-ReactGreen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactGreen.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactGreen/Pods-ReactGreen.release.xcconfig"; sourceTree = "<group>"; };
 		59D226C6740A4483A79DE323 /* PlayfairDisplay-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Italic.ttf"; path = "../assets/fonts/Playfair_Display/PlayfairDisplay-Italic.ttf"; sourceTree = "<group>"; };
 		5A3B54082C1C46FFA25BF532 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		61E45C1ECBC14E7FBD94F599 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		631587B81FFCB406004A9787 /* ReactGreen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ReactGreen.entitlements; path = ReactGreen/ReactGreen.entitlements; sourceTree = "<group>"; };
 		63A835ED1FFCBC9500459B13 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		6A4BF24D3530BB535E1B4050 /* Pods-ReactGreenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactGreenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactGreenTests/Pods-ReactGreenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B1CD21F1E5241FDAFEA54ED /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		6BC9029BF6354238BE21B396 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		78DAD1ED2B6E46E29B520246 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		7BAA0142AE7A970D3E291757 /* Pods-ReactGreen-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactGreen-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactGreen-tvOSTests/Pods-ReactGreen-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		833F9D5BD1844C7DACA60535 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		8A6A10C190644418BCB849D6 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
@@ -424,6 +434,7 @@
 		B0A11B4BCBB44D8C9FE385C1 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		C28C252A54394892B2725558 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		C48F9136B6A24BC78BBC1BDB /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		C97C4F1280CAD1D05013DAF9 /* libPods-ReactGreenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactGreenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA91472A7E29484D8ED18A5C /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		DC0C7869782C4338A99ADFE5 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		E0E92CDDE0824722B22DA03E /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Bold.ttf"; path = "../assets/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
@@ -431,6 +442,7 @@
 		E724C4F6738A4F5FB5FCAFAE /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		EDB93930CC0C43BFB5C95DE8 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		F0A90CBB016F493CBB858583 /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Regular.ttf"; path = "../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		FDE2170B47CAD631507466B5 /* libPods-ReactGreen-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactGreen-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE009F3E800240C6931876E8 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -440,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				D6ADE5B8A7EC3C34F8134894 /* libPods-ReactGreenTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +475,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				0F09A8F11EEB4E26B740BFCD /* libRNVectorIcons.a in Frameworks */,
+				0AAD0CD67ABDE431E307BC42 /* libPods-ReactGreen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +498,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17FC153D9AFD490A4F95343 /* libPods-ReactGreen-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,8 +703,24 @@
 		63A835F61FFCBD8800459B13 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27DCE3E6ABD67DBA897709F6 /* libPods-ReactGreen.a */,
+				FDE2170B47CAD631507466B5 /* libPods-ReactGreen-tvOSTests.a */,
+				C97C4F1280CAD1D05013DAF9 /* libPods-ReactGreenTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72B1144215AB203055F62F09 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FB65C700FB23AFBC2D6425C /* Pods-ReactGreen.debug.xcconfig */,
+				5957BC6F4B7951173072B249 /* Pods-ReactGreen.release.xcconfig */,
+				40E34203235F628E3B122D4C /* Pods-ReactGreen-tvOSTests.debug.xcconfig */,
+				7BAA0142AE7A970D3E291757 /* Pods-ReactGreen-tvOSTests.release.xcconfig */,
+				6A4BF24D3530BB535E1B4050 /* Pods-ReactGreenTests.debug.xcconfig */,
+				3A5C330397D1AA43B49105D7 /* Pods-ReactGreenTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -741,6 +772,7 @@
 				3131CC94BC554BA68CBF8AEC /* Resources */,
 				6374DF141FEF3E870050A3B5 /* Recovered References */,
 				63A835F61FFCBD8800459B13 /* Frameworks */,
+				72B1144215AB203055F62F09 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -774,9 +806,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactGreenTests" */;
 			buildPhases = (
+				79CC458D0D1B50621FA89AEC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				052B8EC37DAFEBAB101132E2 /* [CP] Embed Pods Frameworks */,
+				0953DA68722A217CF2F61272 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -792,10 +827,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactGreen" */;
 			buildPhases = (
+				FAB87C2AEE2A33BFC82045A0 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				CE6EFE603E1CF244A9EFEF39 /* [CP] Embed Pods Frameworks */,
+				8B485DD3ACE8DFCDDA7D1FD3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -828,9 +866,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ReactGreen-tvOSTests" */;
 			buildPhases = (
+				AFF600FD1F3CF063FA361469 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
+				3DAE9FF0BA04D58103B7643F /* [CP] Embed Pods Frameworks */,
+				6DAD8DEAFC244CDDFE70794F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1314,6 +1355,36 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		052B8EC37DAFEBAB101132E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreenTests/Pods-ReactGreenTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0953DA68722A217CF2F61272 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreenTests/Pods-ReactGreenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1327,6 +1398,123 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		3DAE9FF0BA04D58103B7643F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreen-tvOSTests/Pods-ReactGreen-tvOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DAD8DEAFC244CDDFE70794F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreen-tvOSTests/Pods-ReactGreen-tvOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79CC458D0D1B50621FA89AEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReactGreenTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B485DD3ACE8DFCDDA7D1FD3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreen/Pods-ReactGreen-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreen/Pods-ReactGreen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFF600FD1F3CF063FA361469 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReactGreen-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE6EFE603E1CF244A9EFEF39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactGreen/Pods-ReactGreen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAB87C2AEE2A33BFC82045A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReactGreen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1395,6 +1583,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A4BF24D3530BB535E1B4050 /* Pods-ReactGreenTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 2642X925PT;
@@ -1424,6 +1613,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A5C330397D1AA43B49105D7 /* Pods-ReactGreenTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1450,6 +1640,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FB65C700FB23AFBC2D6425C /* Pods-ReactGreen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ReactGreen/ReactGreen.entitlements;
@@ -1479,6 +1670,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5957BC6F4B7951173072B249 /* Pods-ReactGreen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ReactGreen/ReactGreen.entitlements;
@@ -1577,6 +1769,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40E34203235F628E3B122D4C /* Pods-ReactGreen-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1603,6 +1796,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BAA0142AE7A970D3E291757 /* Pods-ReactGreen-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

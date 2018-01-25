@@ -30,16 +30,13 @@ export default class OrderIndex extends Component {
   }
 
   componentWillMount() {
-    getApiInformation(this._getOrders, console.log("Set Error Case"))
+    console.log("Order Index Starting")
+    getApiInformation(this._getOrders, this._handleError)
   }
 
   _getOrders = (apiInfo) => {
-    console.log("Get Orders")
-    console.log("--------------------")
-    console.log(apiInfo)
-    console.log(apiInfo['accessToken'])
-    fetch("http://192.168.1.18:3000/api/orders",{
-      method: "POST",
+    fetch("https://green-delivery.herokuapp.com/api/orders",{
+      method: "GET",
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -55,17 +52,14 @@ export default class OrderIndex extends Component {
   };
 
   _handleError = (error) => {
-    console.log("Order Index Get Orders Error");
     console.log(error);
   };
 
 
   _setOrders = (response) => {
-    console.log("set order")
     console.log(response)
     checkToken(response)
     var orders = JSON.parse(response._bodyText)
-    console.log("setting orders")
     this.setState({orders: orders})
 
   };

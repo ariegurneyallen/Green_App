@@ -10,6 +10,7 @@ import {
   Button,
   TouchableHighlight,
   PushNotificationIOS,
+  Geolocation,
 } from 'react-native';
 
 import {
@@ -18,14 +19,21 @@ import {
   // Button,
 } from 'react-native-elements';
 
-import { checkToken, setAccessToken, getAccessToken, setApiInformation, getApiInformation } from './Api';
+import { checkToken, setAccessToken, getAccessToken, setApiInformation, getApiInformation, setPushToken, getPushToken } from './Api';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const loginUrl = "http://192.168.1.18:3000/auth/sign_in"
-const forgotPasswordUrl = "http://192.168.1.18:3000/auth/password"
-const forgotPasswordRedirectUrl = "http://192.168.1.18:3000/users/sign_in"
+const loginUrl = "https://green-delivery.herokuapp.com/auth/sign_in"
+const forgotPasswordUrl = "https://green-delivery.herokuapp.com/auth/password"
+const forgotPasswordRedirectUrl = "https://green-delivery.herokuapp.com/users/sign_in"
+const pushNotificationUrl = "https://green-delivery.herokuapp.com/api/add_token"
+
+// const loginUrl = "http://192.168.0.2:3000/auth/sign_in"
+// const forgotPasswordUrl = "http://192.168.0.2:3000/auth/password"
+// const forgotPasswordRedirectUrl = "http://192.168.0.2:3000/users/sign_in"
+// const pushNotificationUrl = "http://192.168.0.2:3000/api/add_token"
+
 
 // function loginQuery(email, password) {
 //   return loginUrl + "email=" + email + "&password=" + password;
@@ -47,25 +55,36 @@ export default class MyNavigation extends Component {
   }
 
   componentWillMount() {
-    // PushNotificationIOS.requestPermissions();
-    // PushNotificationIOS.addEventListener('register', function(token){
-    //  console.log('register: ',token)
-    // });
-    // PushNotificationIOS.addEventListener('notification', function(token){
-    //  console.log('notification: ',token)
-    // });
-    // PushNotificationIOS.addEventListener('localNotification', function(token){
-    //  console.log('local notification: ',token)
-    // });
-    // PushNotificationIOS.addEventListener('registrationError', function(token){
-    //  console.log('registrationError: ',token)
-    // });
-  }
+    PushNotificationIOS.requestPermissions();
+    PushNotificationIOS.addEventListener('register', function(token){
+      setPushToken(token)
+    });
+    PushNotificationIOS.addEventListener('registrationError', function(token){
+     console.log('registrationError: ',token)
+    });
+  };
 
   _navigateToHome = (apiInfo) => {
+    getPushToken(apiInfo, this._sendPushToken)
     this.props.navigation.navigate('TabBar', 
       { email: apiInfo['uid'], accessToken: apiInfo['accessToken'], client: apiInfo['client'], expiry: apiInfo['expiry'] }
     )
+  };
+
+  _sendPushToken = (apiInfo, pushToken) => {
+    fetch(pushNotificationUrl,{
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'access-token': apiInfo['accessToken'],
+        'token-type': 'Bearer',
+        'client': apiInfo['client'],
+        'uid': apiInfo['uid'],
+        'expiry': apiInfo['expiry']
+      },
+      body: JSON.stringify({ mobile_access_token: pushToken }),
+    }).then(response => checkToken(response))
   };
 
   // Make Below 2 into one function
@@ -107,7 +126,6 @@ export default class MyNavigation extends Component {
   };
 
   _onLoginPressed = () => {
-
     if(this.state.email == ""){
       this.setState({loginError: "Must enter an email."})
       return
@@ -131,8 +149,6 @@ export default class MyNavigation extends Component {
   };
 
   _handleLoginResponse = (response) => {
-    console.log("Login Response")
-    console.log(response)
     var bodyText = JSON.parse(response._bodyText)
     if(bodyText.errors){
       var errors = bodyText.errors
@@ -159,14 +175,11 @@ export default class MyNavigation extends Component {
   };
 
   _handleLoginError = (error) => {
-    console.log("hanry")
     // Handle errors appropriately
     console.log(error)
   };
 
   render() {
-    // const { navigate } = this.props.navigation;
-
     return (
       <View style={styles.container}>
 

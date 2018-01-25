@@ -11,11 +11,14 @@ import {
   StyleSheet,
   Text,
   View,
+  PushNotificationIOS,
+  AppState,
 } from 'react-native';
 
-import {
-  StackNavigator
-} from 'react-navigation';
+import { StackNavigator, NavigationActions } from 'react-navigation';
+
+import DropdownAlert from 'react-native-dropdownalert';
+
 
 import Login from './Login';
 import SignUp from './SignUp';
@@ -50,18 +53,63 @@ const Nav = StackNavigator({
   },
 });
 
-// export default class App extends Component<{}> {
+export default class App extends Component {
 
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Login/>
-//       </View>
-//     );
-//   }
-// }
+  componentWillMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+    PushNotificationIOS.addEventListener('notification', this._onNotification);
 
-export default Nav;
+    PushNotificationIOS.addEventListener('localNotification', function(token){
+      console.log('local notification: ', token)
+    });
+
+  };
+  // Routes to page if push notification is clicked
+  _onNotification = (notification) => {
+    if (AppState.currentState=='background'){
+      this.navigator.dispatch(
+        NavigationActions.reset({
+          index: 1,
+          key: this.navigator.key,
+          actions: [
+            NavigationActions.navigate({ routeName: "TabBar"}),
+            NavigationActions.navigate({ routeName: "OrderShow", params: { id: notification._data.order_id } }),
+          ]
+        })
+      );
+    }
+    else if (AppState.currentState=='active'){
+      this.dropdown.alertWithType('info', 'New Order', "Order # From...", notification._data.order_id);
+    }
+  };
+
+  _handleAppStateChange = (state) => {
+    // console.log(state)
+    // PushNotificationIOS.addEventListener('notification', this._onLocalNotification);
+  };
+
+  _onNotificationClose = (data) => {
+    this.navigator.dispatch(
+      NavigationActions.reset({
+        index: 1,
+        key: this.navigator.key,
+        actions: [
+          NavigationActions.navigate({ routeName: "TabBar"}),
+          NavigationActions.navigate({ routeName: "OrderShow", params: { id: data.data } }),
+        ]
+      })
+    );
+  };
+
+  render() {
+    return (
+      <View style={styles.container} >
+        <Nav initialRouteName="Login" ref={nav => { this.navigator = nav; }} />
+        <DropdownAlert ref={ref => this.dropdown = ref} onClose={data => this._onNotificationClose(data)} />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
