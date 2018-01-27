@@ -57,7 +57,6 @@ export default class OrderIndex extends Component {
 
 
   _setOrders = (response) => {
-    console.log(response)
     checkToken(response)
     var orders = JSON.parse(response._bodyText)
     this.setState({orders: orders})

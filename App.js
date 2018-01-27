@@ -19,14 +19,25 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import DropdownAlert from 'react-native-dropdownalert';
 
+import { checkToken, setAccessToken, getAccessToken, setApiInformation, 
+         getApiInformation, setPushToken, getPushToken, setPassword, getUsernameAndPassword } from './Api';
+
 
 import Login from './Login';
 import SignUp from './SignUp';
 import Profile from './Profile';
 import TabNavigation from './TabNavigation';
 import OrderShow from './OrderShow';
+import Loading from './Loading';
 
 const Nav = StackNavigator({
+  Loading: {
+    screen: Loading,
+    navigationOptions: {
+      headerLeft: null,
+      headerTitle: null,
+    }
+  },
   Login: {
     screen: Login,
     navigationOptions: {
@@ -53,16 +64,69 @@ const Nav = StackNavigator({
   },
 });
 
+const loginUrl = "https://green-delivery.herokuapp.com/auth/sign_in"
+
 export default class App extends Component {
 
   componentWillMount() {
-    AppState.addEventListener('change', this._handleAppStateChange);
+
+    getUsernameAndPassword(this._login, this._navigateToLogin)
+    // AppState.addEventListener('change', this._handleAppStateChange);
     PushNotificationIOS.addEventListener('notification', this._onNotification);
 
-    PushNotificationIOS.addEventListener('localNotification', function(token){
-      console.log('local notification: ', token)
-    });
 
+  };
+
+  _login = (hash) => {
+    fetch(loginUrl,{
+      method: "POST",
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email : hash.uid, password: hash.password }),
+    })
+      .then(response => this._handleLoginResponse(response))
+      .catch(error => console.log
+    )
+  };
+
+  _handleLoginResponse = (response) => {
+    console.log(response)
+
+    var bodyText = JSON.parse(response._bodyText)
+    if(bodyText.errors){
+      var errors = bodyText.errors
+      console.log(errors)
+      this._navigateToLogin()
+    }
+    else{
+
+      var userInfo = (bodyText.data)
+      var accessToken = response.headers.map['access-token'][0]
+      var client = response.headers.map.client[0]
+      var expiry = response.headers.map.expiry[0]
+      var uid = response.headers.map.uid[0]
+
+      api_hash = {}
+      api_hash["client"] = client
+      api_hash["expiry"] = expiry
+      api_hash["accessToken"] = accessToken
+      api_hash["uid"] = uid
+
+      setApiInformation(api_hash, this._navigateToHome, this._handleError)
+    }
+  };
+
+  _handleError = (error) => {
+    console.log(error)
+  };
+
+  _navigateToHome = () => {
+    const navigateAction = NavigationActions.navigate({ routeName: 'TabBar' });
+    this.navigator.dispatch(navigateAction)
+  };
+
+  _navigateToLogin = () => {
+    const navigateAction = NavigationActions.navigate({ routeName: 'Login' });
+    this.navigator.dispatch(navigateAction)
   };
   // Routes to page if push notification is clicked
   _onNotification = (notification) => {
@@ -81,11 +145,6 @@ export default class App extends Component {
     else if (AppState.currentState=='active'){
       this.dropdown.alertWithType('info', 'New Order', "Order # From...", notification._data.order_id);
     }
-  };
-
-  _handleAppStateChange = (state) => {
-    // console.log(state)
-    // PushNotificationIOS.addEventListener('notification', this._onLocalNotification);
   };
 
   _onNotificationClose = (data) => {

@@ -13,7 +13,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import IconTextListing from './IconTextListing';
 
 const screenWidth = Dimensions.get('window').width;
@@ -85,7 +85,6 @@ export default class OrderIndex extends Component {
   };
 
   _afterUpdateOrder = (status) => {
-    console.log("Status Updated to " + status)
     getApiInformation(this._getOrder, this._handlerError)
   };
 
@@ -99,26 +98,33 @@ export default class OrderIndex extends Component {
     var title = ""
     var buttonStatus = ""
     if(status == "in_driver_queue"){
-      title = "Start Order"
-      buttonStatus = "delivery_in_progress"
+      buttons = [{ title: "Start Order", buttonStatus: "delivery_in_progress" }]
     }
     else if(status == "delivery_in_progress"){
-      title = "Cancel Order"
-      buttonStatus = "cancelled"
+      buttons = [{ title: "Finish Order", buttonStatus: "delivered" },
+                 { title: "Cancel Order", buttonStatus: "cancelled" }]
     }
     else{
-      title = "Dont Press Me"
-      buttonStatus = "incomplete"
+      buttons = null
     }
-    return(<Button
-      onPress={ () => this._onClickUpdateOrderButton(buttonStatus) }
-      title={title}
-      color="#841584"
-    />)
+
+    viewButtons = buttons ? buttons.map((button, i) => {
+      // style = ( i==buttons.length ) ? styles.topBorder : null
+      return(
+        <View key={i} style={styles.topBorder}>
+          <Button
+            onPress={ () => this._onClickUpdateOrderButton(button.buttonStatus) }
+            title={button.title}
+            color="#841584"
+          />
+        </View>
+      )
+    }) : null
+
+    return(viewButtons)
   }
 
   render() {
-   
     var id = this.state.order ?  this.state.order.id : null
     var patient_name = this.state.order ? this.state.order.patient : null
     var price = this.state.order ? this.state.order.price : null
@@ -133,31 +139,22 @@ export default class OrderIndex extends Component {
       )
     }) : null
     var updateOrderButton = (this.state.order) ? this._renderUpdateOrderButton(this.state.order.status) : null
-
-    var maps = this.state.order && this.state.order.address_latitude && this.state.driverLongitude ?
+    var maps = this.state.order && this.state.order.latitude ?
       <MapView style={styles.map}
-          initialRegion={{
+          provider={PROVIDER_GOOGLE}
+          showsUserLocation={true}
+          followsUserLocation={true}
+          region={{
             latitude: this.state.driverLatitude,
-            longitude: this.state.driverLatitude,
+            longitude: this.state.driverLongitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-        >  
+        >
           <MapView.Marker
             coordinate={{
-              latitude: this.state.driverLatitude,
-              longitude: this.state.driverLongitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            title={"My Location"}
-          />
-          <MapView.Marker
-            coordinate={{
-              latitude: this.state.order.address_latitude,
-              longitude: this.state.order.address_longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitude: parseFloat(this.state.order.latitude),
+              longitude: parseFloat(this.state.order.longitude)
             }}
             title={"My Location"}
           />
@@ -227,6 +224,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderTopWidth: 1,
     paddingTop: 5,
+  },
+  topBorder: {
+    borderBottomColor: '#bbb',
+    borderBottomWidth: 1,
   },
   map: {
     flex: 1,

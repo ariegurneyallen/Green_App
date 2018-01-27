@@ -19,6 +19,36 @@ function checkToken(response) {
   }
 }
 
+async function setPassword(password) {
+  try {
+    await AsyncStorage.setItem('password', password)
+  } catch (error) {
+
+  }
+}
+
+async function getUsernameAndPassword(successFunction, otherFunction) {
+  return await AsyncStorage.multiGet(['uid', 'password']).then((token) => {
+    hash = token.reduce(function(p, c) {
+         p[c[0]] = c[1];
+         return p;
+    }, {});
+
+    console.log(hash)
+
+    if(hash.uid && hash.password){
+      successFunction(hash)
+      console.log("Success Function")
+    }
+    else{
+      otherFunction()
+    }
+
+  }, (error) => {
+    console.log(error)
+  });
+};
+
 async function setPushToken(pushToken) {
   try {
     await AsyncStorage.setItem('pushToken', pushToken)
@@ -54,6 +84,7 @@ async function getAccessToken(successFunction, errorFunction) {
 };
 
 async function setApiInformation(api_hash, successFunction, errorFunction) {
+  console.log("setapiinfo")
   return await AsyncStorage.multiSet([
     ['accessToken', api_hash['accessToken']], 
     ['uid', api_hash['uid']], 
@@ -86,4 +117,4 @@ async function getApiInformation(successFunction, errorFunction, params) {
 };
 
 
-export { checkToken, setAccessToken, getAccessToken, getApiInformation, setApiInformation, setPushToken, getPushToken };
+export { checkToken, setAccessToken, getAccessToken, getApiInformation, setApiInformation, setPushToken, getPushToken, getUsernameAndPassword, setPassword };

@@ -19,7 +19,7 @@ import {
   // Button,
 } from 'react-native-elements';
 
-import { checkToken, setAccessToken, getAccessToken, setApiInformation, getApiInformation, setPushToken, getPushToken } from './Api';
+import { checkToken, setAccessToken, getAccessToken, setApiInformation, getApiInformation, setPushToken, getPushToken, setPassword } from './Api';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -145,7 +145,8 @@ export default class MyNavigation extends Component {
       body: JSON.stringify({ email : this.state.email, password: this.state.password }),
     })
       .then(response => this._handleLoginResponse(response))
-      .catch(error => this._handleLoginError(error))
+      .catch(error => this._handleLoginError(error)
+    )
   };
 
   _handleLoginResponse = (response) => {
@@ -168,7 +169,7 @@ export default class MyNavigation extends Component {
       api_hash["accessToken"] = accessToken
       api_hash["uid"] = this.state.email
 
-
+      setPassword(this.state.password)
       setApiInformation(api_hash, this._navigateToHome, this._handleLoginError)
 
     }
