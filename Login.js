@@ -66,7 +66,7 @@ export default class MyNavigation extends Component {
 
   _navigateToHome = (apiInfo) => {
     getPushToken(apiInfo, this._sendPushToken)
-    this.props.navigation.navigate('TabBar', 
+    this.props.navigation.navigate('TabBar',
       { email: apiInfo['uid'], accessToken: apiInfo['accessToken'], client: apiInfo['client'], expiry: apiInfo['expiry'] }
     )
   };
@@ -185,7 +185,7 @@ export default class MyNavigation extends Component {
       <View style={styles.container}>
 
         <Text style={styles.title}>
-          {"Green"}
+          {"Libera"}
         </Text>
 
         <Text style={styles.message}>
