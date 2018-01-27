@@ -132,8 +132,8 @@ export default class OrderIndex extends Component {
     var items = (this.state.order && this.state.order.items) ? this.state.order.items.map((item, i) => {
       return(
         <View key={i}>
-          <IconTextListing 
-            text={item.quantity + " " + item.name} 
+          <IconTextListing
+            text={item.quantity + " " + item.name}
             rightText={item.price} />
         </View>
       )
@@ -164,21 +164,33 @@ export default class OrderIndex extends Component {
         <View style={styles.titleView}>
           <Text style={styles.title}> {"Order #" + id} </Text>
         </View>
-        <Text style={styles.sectionTitle}> INFO </Text>
+        <Text style={styles.sectionTitle}> Info </Text>
         <View style={styles.infoView}>
-          <IconTextListing type="feather" name="user" size={20} height={20} width={20} color='#383838' text={patient_name} />
-          <IconTextListing type="MaterialIcons" name="attach-money" size={20} height={20} width={20} color='#383838' text={price} />
+          <IconTextListing type="feather" name="user" size={20} height={20} width={20} color='#989d9d' text={patient_name} />
+          <IconTextListing type="MaterialIcons" name="attach-money" size={20} height={20} width={20} color='#989d9d' text={price} />
+          <Button
+            onPress={this._onLogoutPressed}
+            title='Call patient'
+            containerViewStyle={{width: '80%', marginLeft: 25}}
+          />
         </View>
-        <Text style={styles.sectionTitle}> ITEMS </Text>
+        <Text style={styles.sectionTitle}> Items </Text>
         <View style={styles.infoView}>
           {items}
         </View>
-        <Text style={styles.sectionTitle}> MAPS </Text>
+        <Text style={styles.sectionTitle}> Directions </Text>
         <View style={styles.mapView}>
           {maps}
           <IconTextListing text={address} />
         </View>
-        <Text style={styles.sectionTitle}> ACTIONS </Text>
+        <View>
+          <Button
+            onPress={this._onLogoutPressed}
+            title='Get directions'
+            containerViewStyle={{width: '80%', marginLeft: 25}}
+          />
+        </View>
+        <Text style={styles.sectionTitle}> Actions </Text>
         <View style={styles.infoView}>
           {updateOrderButton}
         </View>
@@ -189,7 +201,8 @@ export default class OrderIndex extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#ffffff'
   },
   mapView: {
     flex: 1,
@@ -202,16 +215,20 @@ const styles = StyleSheet.create({
   },
   titleView: {
     borderBottomColor: '#bbb',
-    borderBottomWidth: 1,
-    backgroundColor: 'white',
+
   },
   sectionTitle: {
-    color: '#383838',
     paddingTop: 10,
+    fontSize: 12,
+    fontFamily: 'OpenSans-Light',
+    marginLeft: 2,
+    marginBottom: 2,
+    color: '#989d9d',
+    marginLeft: 6
   },
   title: {
     fontSize: 25,
-    backgroundColor: 'white',
+    fontFamily: 'OpenSans-SemiBold',
     paddingTop: 5,
     paddingBottom: 5,
   },
@@ -219,15 +236,17 @@ const styles = StyleSheet.create({
   },
   infoView: {
     backgroundColor: 'white',
-    borderBottomColor: '#bbb',
-    borderTopColor: '#bbb',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    paddingTop: 5,
+    // borderBottomColor: '#bbb',
+    // borderTopColor: '#bbb',
+    // borderBottomWidth: 1,
+    // borderTopWidth: 1,
+    paddingTop: 3,
+    fontFamily: 'OpenSans-SemiBold',
+    marginLeft: 6
   },
   topBorder: {
     borderBottomColor: '#bbb',
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
   },
   map: {
     flex: 1,
@@ -236,5 +255,5 @@ const styles = StyleSheet.create({
     // bottom: Dimensions.get('window').width * 0.8,
     // left: 0,
     // right: 0,
-  },
+  }
 });
