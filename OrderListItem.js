@@ -11,6 +11,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+import FontAwesome, { Icons } from 'react-native-fontawesome';
+
 import KeyValueText from './KeyValueText'
 
 const screenWidth = Dimensions.get('window').width;
@@ -41,13 +43,12 @@ export default class OrderListItem extends Component {
             <KeyValueText label={'Patient'} content={order.patient} />
 
             <KeyValueText label={'Address'} content={order.address} />
-
           </Text>
 
           <View style={styles.center}>
-            <TouchableHighlight style={styles.button}>
-                <Text style={styles.start} onPress={this._onSignUpPressed}> Start Delivery </Text>
-            </TouchableHighlight>
+              <Text style={{margin: 10, fontSize: 25, textAlign: 'left', color: 'white'}}>
+                  <FontAwesome>{Icons.arrowRight}</FontAwesome>
+              </Text>
           </View>
 
         </View>
@@ -65,39 +66,24 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: '#95BCF2',
+    backgroundColor: '#251351',
     overflow: 'visible',
     padding: 7,
     borderRadius: 10,
   },
 
   seperator: {
-    height: 12
+    height: 10
   },
 
   text: {
     fontSize: 15,
     color: '#ffffff',
-    lineHeight: 25
-  },
-
-  button: {
-    backgroundColor: '#ffffff',
-    padding: 7,
-    borderRadius: 20,
-    width: screenWidth * 0.5,
-    margin: 'auto'
-  },
-
-  start: {
-    color: '#2C3951',
-    fontFamily: 'OpenSans-Bold',
-    fontSize: 18,
-    textAlign: 'center'
+    lineHeight: 20
   },
 
   center: {
-    alignItems: 'center'
+    alignItems: 'flex-end'
   }
 
 });
