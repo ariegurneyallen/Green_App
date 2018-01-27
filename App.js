@@ -68,7 +68,23 @@ const loginUrl = "https://green-delivery.herokuapp.com/auth/sign_in"
 
 export default class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {}
+    this.setState = this.setState.bind(this);
+
+  }
+
   componentWillMount() {
+
+    var orderID = null
+
+    PushNotificationIOS.getInitialNotification().then(notification => {
+      if (notification != null) {
+        this.setState({orderID: notification._data.order_id})
+      }
+    });
 
     getUsernameAndPassword(this._login, this._navigateToLogin)
     // AppState.addEventListener('change', this._handleAppStateChange);
@@ -89,7 +105,6 @@ export default class App extends Component {
   };
 
   _handleLoginResponse = (response) => {
-    console.log(response)
 
     var bodyText = JSON.parse(response._bodyText)
     if(bodyText.errors){
@@ -120,12 +135,38 @@ export default class App extends Component {
   };
 
   _navigateToHome = () => {
-    const navigateAction = NavigationActions.navigate({ routeName: 'TabBar' });
+    if(this.state.orderID != null){
+      var navigateAction = NavigationActions.reset({
+        index: 1,
+        key: this.navigator.key,
+        actions: [
+          NavigationActions.navigate({ routeName: "TabBar"}),
+          NavigationActions.navigate({ routeName: "OrderShow", params: { id: this.state.orderID } }),
+        ]
+      });
+    }
+    else{
+      var navigateAction = NavigationActions.reset({ 
+        index: 0,
+        key: this.navigator.key,
+        actions: [
+          NavigationActions.navigate({ routeName: "TabBar" }),
+        ]
+      });
+    }
+
     this.navigator.dispatch(navigateAction)
   };
 
   _navigateToLogin = () => {
-    const navigateAction = NavigationActions.navigate({ routeName: 'Login' });
+    const navigateAction = NavigationActions.reset({ 
+      index: 0,
+      key: this.navigator.key,
+      actions: [
+        NavigationActions.navigate({ routeName: "Login" }),
+      ]
+    });
+
     this.navigator.dispatch(navigateAction)
   };
   // Routes to page if push notification is clicked
@@ -148,16 +189,18 @@ export default class App extends Component {
   };
 
   _onNotificationClose = (data) => {
-    this.navigator.dispatch(
-      NavigationActions.reset({
-        index: 1,
-        key: this.navigator.key,
-        actions: [
-          NavigationActions.navigate({ routeName: "TabBar"}),
-          NavigationActions.navigate({ routeName: "OrderShow", params: { id: data.data } }),
-        ]
-      })
-    );
+    if(data.action=="tap"){
+      this.navigator.dispatch(
+        NavigationActions.reset({
+          index: 1,
+          key: this.navigator.key,
+          actions: [
+            NavigationActions.navigate({ routeName: "TabBar"}),
+            NavigationActions.navigate({ routeName: "OrderShow", params: { id: data.data } }),
+          ]
+        })
+      );
+    }
   };
 
   render() {

@@ -27,18 +27,15 @@ async function setPassword(password) {
   }
 }
 
-async function getUsernameAndPassword(successFunction, otherFunction) {
+async function getUsernameAndPassword(successFunction, otherFunction, order) {
   return await AsyncStorage.multiGet(['uid', 'password']).then((token) => {
     hash = token.reduce(function(p, c) {
          p[c[0]] = c[1];
          return p;
     }, {});
 
-    console.log(hash)
-
     if(hash.uid && hash.password){
-      successFunction(hash)
-      console.log("Success Function")
+      successFunction(hash, order)
     }
     else{
       otherFunction()
