@@ -79,29 +79,7 @@ export default class Profile extends Component {
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
         </View>
-        <Text style={styles.title}>
-            {"Navigation Preference"}
-          </Text>
-          <View style={styles.row}>
-            <Button
-              onPress={this._onLogoutPressed}
-              color='#427cee'
-              title='Google Maps'
-              containerViewStyle={{width: '80%', marginLeft: 25}}
-            />
-            <Button
-              onPress={this._onLogoutPressed}
-              color='#427cee'
-              title='Apple Maps'
-              containerViewStyle={{width: '80%', marginLeft: 25}}
-            />
-            <Button
-              onPress={this._onLogoutPressed}
-              color='#427cee'
-              title='Waze'
-              containerViewStyle={{width: '80%', marginLeft: 25}}
-            />
-          </View>
+        
 
         <View style={styles.row1}>
         <Button
