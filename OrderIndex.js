@@ -24,8 +24,7 @@ export default class OrderIndex extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = { refresh: false };
 
   }
 
@@ -60,11 +59,17 @@ export default class OrderIndex extends Component {
     checkToken(response)
     var orders = JSON.parse(response._bodyText)
     this.setState({orders: orders})
+    this.setState({refresh: false})
 
   };
 
   _onButtonPress = () => {
     console.log(this.state.orders)
+  };
+
+  _refreshPage = () => {
+    this.setState({refresh: true})
+    getApiInformation(this._getOrders, this._handleError)
   };
 
   _keyExtractor = (order, index) => index;
@@ -84,6 +89,8 @@ export default class OrderIndex extends Component {
         data={this.state.orders}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
+        refreshing={this.state.refresh}
+        onRefresh={ () => this._refreshPage() }
       /> : <Text>{"Loading"}</Text>
     return (
       <View style={styles.container}>

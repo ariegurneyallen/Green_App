@@ -11,10 +11,15 @@ import {
   FlatList,
   TouchableHighlight,
   ScrollView,
+  Linking
 } from 'react-native';
 
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import IconTextListing from './IconTextListing';
+import call from 'react-native-phone-call';
+import Prompt from 'react-native-prompt';
+// import getDirections from 'react-native-google-maps-directions'
+
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -25,7 +30,7 @@ export default class OrderIndex extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { showPrompt: false
     };
   }
 
@@ -74,14 +79,14 @@ export default class OrderIndex extends Component {
         'uid': apiInfo["uid"],
         'expiry': apiInfo["expiry"]
       },
-      body: JSON.stringify({ status: status }),
+      body: JSON.stringify(status),
     })
       .then(response => this._afterUpdateOrder(status))
       .catch(error => console.log(error))
   };
 
   _onClickUpdateOrderButton = (status) => {
-    getApiInformation(this._updateOrder, this._handlerError, status)
+    getApiInformation(this._updateOrder, this._handlerError, { status: status })
   };
 
   _afterUpdateOrder = (status) => {
@@ -89,9 +94,27 @@ export default class OrderIndex extends Component {
   };
 
   _setOrder = (response) => {
+    console.log(response)
     checkToken(response)
     var order = JSON.parse(response._bodyInit)
     this.setState({order: order})
+  };
+
+  _submitComment = (value) => {
+    console.log("submit Notes")
+    getApiInformation(this._updateOrder, this._handlerError, { comment: value })
+    this.setState( {showPrompt: false})
+  };
+
+  _callPatient = () => {
+    call({ number: this.state.order.phone_number, prompt: false }).catch(console.error)
+  };
+
+  _getDirections = () => {
+
+    url = "https://www.google.com/maps/dir/?api=1&destination=" + this.state.order.address
+    Linking.openURL(url)
+  
   };
 
   _renderUpdateOrderButton = (status) => {
@@ -122,7 +145,7 @@ export default class OrderIndex extends Component {
     }) : null
 
     return(viewButtons)
-  }
+  };
 
   render() {
     var id = this.state.order ?  this.state.order.id : null
@@ -138,6 +161,15 @@ export default class OrderIndex extends Component {
         </View>
       )
     }) : null
+    var callButton = (this.state.order && this.state.order.phone_number) ?
+      <Button
+        onPress={this._callPatient}
+        title='Call patient'
+        containerViewStyle={{width: '80%', marginLeft: 25}}
+      /> : null
+    var comments = (this.state.order && this.state.order.comment) ? 
+      <Text>{this.state.order.comment}</Text> : null
+    var commentsText = (this.state.order && this.state.order.comment) ? this.state.order.comment : ""
     var updateOrderButton = (this.state.order) ? this._renderUpdateOrderButton(this.state.order.status) : null
     var maps = this.state.order && this.state.order.latitude ?
       <MapView style={styles.map}
@@ -168,11 +200,7 @@ export default class OrderIndex extends Component {
         <View style={styles.infoView}>
           <IconTextListing type="feather" name="user" size={20} height={20} width={20} color='#989d9d' text={patient_name} />
           <IconTextListing type="MaterialIcons" name="attach-money" size={20} height={20} width={20} color='#989d9d' text={price} />
-          <Button
-            onPress={this._onLogoutPressed}
-            title='Call patient'
-            containerViewStyle={{width: '80%', marginLeft: 25}}
-          />
+          {callButton}
         </View>
         <Text style={styles.sectionTitle}> Items </Text>
         <View style={styles.infoView}>
@@ -185,8 +213,17 @@ export default class OrderIndex extends Component {
         </View>
         <View>
           <Button
-            onPress={this._onLogoutPressed}
+            onPress={this._getDirections}
             title='Get directions'
+            containerViewStyle={{width: '80%', marginLeft: 25}}
+          />
+        </View>
+        <Text style={styles.sectionTitle}> Comments </Text>
+        <View style={styles.infoView}>
+          {comments}
+          <Button
+            onPress={ () => this.setState( {showPrompt: true}) }
+            title={comments ? "Edit Comment" : "Add Comment"}
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
         </View>
@@ -194,6 +231,14 @@ export default class OrderIndex extends Component {
         <View style={styles.infoView}>
           {updateOrderButton}
         </View>
+        <Prompt
+          title="Enter Comment"
+          placeholder="Enter Comments Here"
+          defaultValue={commentsText}
+          visible={ this.state.showPrompt }
+          onCancel={ () => this.setState( {showPrompt: false}) }
+          onSubmit={ (value) => this._submitComment(value) }
+        />
       </ScrollView>
     )
   }
@@ -241,7 +286,6 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 1,
     // borderTopWidth: 1,
     paddingTop: 3,
-    fontFamily: 'OpenSans-SemiBold',
     marginLeft: 6
   },
   topBorder: {
