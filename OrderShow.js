@@ -6,18 +6,20 @@ import {
   StyleSheet,
   TextInput,
   Dimensions,
-  Button,
   AsyncStorage,
   FlatList,
   TouchableHighlight,
   ScrollView,
-  Linking
+  Linking,
+
 } from 'react-native';
+
+import { Button } from 'native-base';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import IconTextListing from './IconTextListing';
 import call from 'react-native-phone-call';
-import Prompt from 'react-native-prompt';
+// import Prompt from 'react-native-prompt';
 // import getDirections from 'react-native-google-maps-directions'
 
 
@@ -114,12 +116,12 @@ export default class OrderIndex extends Component {
 
     url = "https://www.google.com/maps/dir/?api=1&destination=" + this.state.order.address
     Linking.openURL(url)
-  
+
   };
 
   _renderUpdateOrderButton = (status) => {
-    var title = ""
-    var buttonStatus = ""
+    var title = "" //unused?
+    var buttonStatus = "" //unused?
     if(status == "in_driver_queue"){
       buttons = [{ title: "Start Order", buttonStatus: "delivery_in_progress" }]
     }
@@ -133,13 +135,23 @@ export default class OrderIndex extends Component {
 
     viewButtons = buttons ? buttons.map((button, i) => {
       // style = ( i==buttons.length ) ? styles.topBorder : null
+      button = (button.buttonStatus == "cancelled") ? (
+        <Button block bordered danger style={styles.buttonz}
+          onPress={ () => this._onClickUpdateOrderButton(button.buttonStatus) }
+        >
+          <Text style={{ color: 'red', fontSize: 15}}>{button.title}</Text>
+        </Button>
+      ) : (
+        <Button block style={styles.buttonz}
+          onPress={ () => this._onClickUpdateOrderButton(button.buttonStatus) }
+        >
+          <Text style={{ color: '#ffffff', fontSize: 15}}>{button.title}</Text>
+        </Button>
+      )
+
       return(
         <View key={i} style={styles.topBorder}>
-          <Button
-            onPress={ () => this._onClickUpdateOrderButton(button.buttonStatus) }
-            title={button.title}
-            color="#841584"
-          />
+          {button}
         </View>
       )
     }) : null
@@ -162,12 +174,15 @@ export default class OrderIndex extends Component {
       )
     }) : null
     var callButton = (this.state.order && this.state.order.phone_number) ?
-      <Button
+      (<Button
         onPress={this._callPatient}
         title='Call patient'
         containerViewStyle={{width: '80%', marginLeft: 25}}
-      /> : null
-    var comments = (this.state.order && this.state.order.comment) ? 
+      >
+        <Text>Call Patient</Text>
+      </Button>
+    ) : null
+    var comments = (this.state.order && this.state.order.comment) ?
       <Text>{this.state.order.comment}</Text> : null
     var commentsText = (this.state.order && this.state.order.comment) ? this.state.order.comment : ""
     var updateOrderButton = (this.state.order) ? this._renderUpdateOrderButton(this.state.order.status) : null
@@ -196,13 +211,17 @@ export default class OrderIndex extends Component {
         <View style={styles.titleView}>
           <Text style={styles.title}> {"Order #" + id} </Text>
         </View>
+        <View style={styles.buttonz}>
+          {updateOrderButton}
+        </View>
+
         <Text style={styles.sectionTitle}> Info </Text>
         <View style={styles.infoView}>
           <IconTextListing type="feather" name="user" size={20} height={20} width={20} color='#989d9d' text={patient_name} />
           <IconTextListing type="MaterialIcons" name="attach-money" size={20} height={20} width={20} color='#989d9d' text={price} />
           {callButton}
         </View>
-        <Text style={styles.sectionTitle}> Items </Text>
+        <Text style={styles.sectionTitle}> Products </Text>
         <View style={styles.infoView}>
           {items}
         </View>
@@ -212,11 +231,13 @@ export default class OrderIndex extends Component {
           <IconTextListing text={address} />
         </View>
         <View>
-          <Button
-            onPress={this._getDirections}
-            title='Get directions'
-            containerViewStyle={{width: '80%', marginLeft: 25}}
-          />
+            <Button block style={styles.buttonz}
+              onPress={this._getDirections}
+              title='Get directions'
+              containerViewStyle={{width: '80%', marginLeft: 25}}
+            >
+                <Text>Get Directions</Text>
+            </Button>
         </View>
         <Text style={styles.sectionTitle}> Comments </Text>
         <View style={styles.infoView}>
@@ -227,10 +248,8 @@ export default class OrderIndex extends Component {
             containerViewStyle={{width: '80%', marginLeft: 25}}
           />
         </View>
-        <Text style={styles.sectionTitle}> Actions </Text>
-        <View style={styles.infoView}>
-          {updateOrderButton}
-        </View>
+
+        {/*}
         <Prompt
           title="Enter Comment"
           placeholder="Enter Comments Here"
@@ -239,6 +258,7 @@ export default class OrderIndex extends Component {
           onCancel={ () => this.setState( {showPrompt: false}) }
           onSubmit={ (value) => this._submitComment(value) }
         />
+        */}
       </ScrollView>
     )
   }
@@ -264,29 +284,28 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     paddingTop: 10,
-    fontSize: 12,
-    fontFamily: 'OpenSans-Light',
+    fontSize: 15,
     marginLeft: 2,
     marginBottom: 2,
-    color: '#989d9d',
-    marginLeft: 6
+    color: '#000000',
+    marginLeft: 6,
+    fontWeight: '800'
   },
   title: {
-    fontSize: 25,
-    fontFamily: 'OpenSans-SemiBold',
-    paddingTop: 5,
+    fontSize: 30,
+    fontWeight: '900',
+    paddingTop: 10,
     paddingBottom: 5,
-  },
-  icon: {
   },
   infoView: {
     backgroundColor: 'white',
-    // borderBottomColor: '#bbb',
+     borderBottomColor: '#bbb',
     // borderTopColor: '#bbb',
-    // borderBottomWidth: 1,
+     borderBottomWidth: 1,
     // borderTopWidth: 1,
     paddingTop: 3,
-    marginLeft: 6
+    marginHorizontal: 8,
+    paddingBottom: '5%'
   },
   topBorder: {
     borderBottomColor: '#bbb',
@@ -299,5 +318,9 @@ const styles = StyleSheet.create({
     // bottom: Dimensions.get('window').width * 0.8,
     // left: 0,
     // right: 0,
+  },
+  buttonz: {
+    marginHorizontal: 6,
+    marginBottom: 5,
   }
 });
