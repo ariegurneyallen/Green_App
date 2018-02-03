@@ -64,32 +64,14 @@ export default class Profile extends Component {
       <Text style={styles.title}>
           {"Profile"}
         </Text>
-
-        <View style={styles.row}>
-          <Button
-            onPress={this._onLogoutPressed}
-            //color='#427cee'
-            title='Change email'
-            containerViewStyle={{width: '80%', marginLeft: 25}}
-          />
-          <Button
-            onPress={this._onLogoutPressed}
-            //color='#427cee'
-            title='Change password'
-            containerViewStyle={{width: '80%', marginLeft: 25}}
-          />
-        </View>
-        
-
-        <View style={styles.row1}>
-        <Button
-          onPress={this._onLogoutPressed}
-          color='#427cee'
-          title='Logout'
-          containerViewStyle={{width: '80%', marginLeft: 25}}
-        />
-        </View>
-
+          <View style={styles.row1}>
+              <Button
+                onPress={this._onLogoutPressed}
+                color='#427cee'
+                title='Logout'
+                containerViewStyle={{width: '80%', marginLeft: 25}}
+              />
+          </View>
       </View>
     )
   }
@@ -111,20 +93,11 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
 
-  row: {
-    backgroundColor: '#ffffff',
-    borderTopWidth: .3,
-    borderBottomWidth: .3,
-    borderColor: '#A9A9A9',
-    marginBottom: 50
-  },
-
   row1: {
     backgroundColor: '#ffffff',
     borderTopWidth: .3,
     borderBottomWidth: .3,
     borderColor: '#A9A9A9',
-    marginTop: 200
   }
 
 });
