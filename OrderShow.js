@@ -19,7 +19,7 @@ import { Button } from 'native-base';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import IconTextListing from './IconTextListing';
 import call from 'react-native-phone-call';
-// import Prompt from 'react-native-prompt';
+import Prompt from 'react-native-prompt';
 // import getDirections from 'react-native-google-maps-directions'
 
 
@@ -120,43 +120,36 @@ export default class OrderIndex extends Component {
   };
 
   _renderUpdateOrderButton = (status) => {
-    var title = "" //unused?
-    var buttonStatus = "" //unused?
-    if(status == "in_driver_queue"){
-      buttons = [{ title: "Start Order", buttonStatus: "delivery_in_progress" }]
-    }
-    else if(status == "delivery_in_progress"){
-      buttons = [{ title: "Finish Order", buttonStatus: "delivered" },
-                 { title: "Cancel Order", buttonStatus: "cancelled" }]
-    }
-    else{
-      buttons = null
-    }
 
-    viewButtons = buttons ? buttons.map((button, i) => {
-      // style = ( i==buttons.length ) ? styles.topBorder : null
-      button = (button.buttonStatus == "cancelled") ? (
-        <Button block bordered danger style={styles.buttonz}
-          onPress={ () => this._onClickUpdateOrderButton(button.buttonStatus) }
-        >
-          <Text style={{ color: 'red', fontSize: 15}}>{button.title}</Text>
-        </Button>
-      ) : (
-        <Button block style={styles.buttonz}
-          onPress={ () => this._onClickUpdateOrderButton(button.buttonStatus) }
-        >
-          <Text style={{ color: '#ffffff', fontSize: 15}}>{button.title}</Text>
-        </Button>
-      )
-
+    
+    if(status == "delivery_in_progress"){
       return(
-        <View key={i} style={styles.topBorder}>
-          {button}
+        <View>
+          <Button block primary style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("delivered") } >
+            <Text style={{ color: '#ffffff', fontSize: 15}}>{"Finish Order"}</Text>
+          </Button>
+          <Button block danger style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("cancelled") } >
+            <Text style={{ color: 'red', fontSize: 15}}>{"Cancel Order"}</Text>
+          </Button>
         </View>
       )
-    }) : null
+    }
+    else if(status == "in_driver_queue"){
+      return(
+        <Button block primary style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("delivery_in_progress") } >
+          <Text style={{ color: '#ffffff', fontSize: 15}}>{"Start Order"}</Text>
+        </Button>
+      )
+    }
+    else if (status == "delivered"){
+      return(
+        <Text>{"This order has been successfully delivered"}</Text>
+      )
+    }
+    else{
+      return
+    }
 
-    return(viewButtons)
   };
 
   render() {
@@ -183,7 +176,7 @@ export default class OrderIndex extends Component {
       </Button>
     ) : null
     var comments = (this.state.order && this.state.order.comment) ?
-      <Text>{this.state.order.comment}</Text> : null
+      <Text style={styles.comments}>{this.state.order.comment}</Text> : null
     var commentsText = (this.state.order && this.state.order.comment) ? this.state.order.comment : ""
     var updateOrderButton = (this.state.order) ? this._renderUpdateOrderButton(this.state.order.status) : null
     var maps = this.state.order && this.state.order.latitude ?
@@ -226,11 +219,11 @@ export default class OrderIndex extends Component {
           {items}
         </View>
         <Text style={styles.sectionTitle}> Directions </Text>
-        <View style={styles.mapView}>
-          {maps}
-          <IconTextListing text={address} />
-        </View>
-        <View>
+        <View style={styles.infoView}>
+          <View style={styles.mapView}>
+            {maps}
+            <IconTextListing text={address} />
+
             <Button block style={styles.buttonz}
               onPress={this._getDirections}
               title='Get directions'
@@ -238,18 +231,18 @@ export default class OrderIndex extends Component {
             >
                 <Text>Get Directions</Text>
             </Button>
+          </View>
         </View>
         <Text style={styles.sectionTitle}> Comments </Text>
         <View style={styles.infoView}>
           {comments}
-          <Button
+          <Button block style={styles.buttonz}
             onPress={ () => this.setState( {showPrompt: true}) }
-            title={comments ? "Edit Comment" : "Add Comment"}
             containerViewStyle={{width: '80%', marginLeft: 25}}
-          />
+          >
+          <Text>{comments ? "Edit Comment" : "Add Comment"}</Text>
+          </Button>
         </View>
-
-        {/*}
         <Prompt
           title="Enter Comment"
           placeholder="Enter Comments Here"
@@ -258,7 +251,6 @@ export default class OrderIndex extends Component {
           onCancel={ () => this.setState( {showPrompt: false}) }
           onSubmit={ (value) => this._submitComment(value) }
         />
-        */}
       </ScrollView>
     )
   }
@@ -273,14 +265,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     height: 300,
-    borderBottomColor: '#bbb',
-    borderTopColor: '#bbb',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
   },
   titleView: {
     borderBottomColor: '#bbb',
 
+  },  
+  comments: {
+    marginBottom: 10,
   },
   sectionTitle: {
     paddingTop: 10,
