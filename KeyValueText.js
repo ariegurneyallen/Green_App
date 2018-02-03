@@ -20,10 +20,11 @@ export default class KeyValueText extends Component {
 
   render() {
     return(
-      <Text style={styles.text}>
-      <Text style={styles.label}>{this.props.label}</Text>:{this.props.content}
-      {"\n"}
-      </Text>
+      <View>
+        <Text style={styles.text}>
+        <Text style={styles.label}>{this.props.label}</Text>:{this.props.content}
+        </Text>
+      </View>
     )
   }
 }
@@ -32,12 +33,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#95BCF2',
     overflow: 'visible',
-    padding: 7,
     borderRadius: 10,
-  },
-
-  seperator: {
-    height: 10
   },
 
   text: {
