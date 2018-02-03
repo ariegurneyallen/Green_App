@@ -9,6 +9,8 @@ import {
   Button,
   AsyncStorage,
   FlatList,
+  SectionList,
+  Header,
   TouchableHighlight,
 } from 'react-native';
 
@@ -58,6 +60,7 @@ export default class OrderIndex extends Component {
   _setOrders = (response) => {
     checkToken(response)
     var orders = JSON.parse(response._bodyText)
+    console.log(orders)
     this.setState({orders: orders})
     this.setState({refresh: false})
 
@@ -85,10 +88,12 @@ export default class OrderIndex extends Component {
 
   render() {
     var orders = this.state.orders ?
-      <FlatList
-        data={this.state.orders}
-        keyExtractor={this._keyExtractor}
+      <SectionList
+        // data={this.state.orders}
+        // keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
+        renderSectionHeader={({section}) => <Text>{section.title}</Text>}
+        sections={[{ data: this.state.orders.orders_in_delivery, title: "Current Order" }, { data: this.state.orders.orders_in_queue, title: "Queued Orders" }]}
         refreshing={this.state.refresh}
         onRefresh={ () => this._refreshPage() }
       /> : <Text>{"Loading"}</Text>
