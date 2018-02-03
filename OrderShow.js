@@ -129,7 +129,7 @@ export default class OrderIndex extends Component {
             <Text style={{ color: '#ffffff', fontSize: 15}}>{"Finish Order"}</Text>
           </Button>
           <Button block danger style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("cancelled") } >
-            <Text style={{ color: 'red', fontSize: 15}}>{"Cancel Order"}</Text>
+            <Text style={{ color: '#ffffff', fontSize: 15}}>{"Cancel Order"}</Text>
           </Button>
         </View>
       )

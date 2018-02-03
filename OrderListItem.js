@@ -33,27 +33,23 @@ export default class OrderListItem extends Component {
 
     return (
       <View>
-      <TouchableHighlight style={styles.corner}
-        onPress={this._onPress}
-      >
-        <View style={styles.container}>
-          <Text style={styles.text}>
-            <KeyValueText label={'Status'} content={order.status} />
-
-            <KeyValueText label={'Patient'} content={order.patient} />
-
-            <KeyValueText label={'Address'} content={order.address} />
-          </Text>
-
-          <View style={styles.center}>
-              <Text style={{margin: 10, fontSize: 25, textAlign: 'left', color: 'white'}}>
+        <TouchableHighlight style={styles.corner}
+          onPress={this._onPress}
+        >
+          <View style={styles.container}>
+            <View style={styles.firstRow}>
+              <View style={{flex: 4}}>
+                <KeyValueText label={'Patient'} content={order.patient} />
+              </View>
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text style={styles.arrowText}>
                   <FontAwesome>{Icons.arrowRight}</FontAwesome>
-              </Text>
+                </Text>
+              </View>
+            </View>
           </View>
-
-        </View>
-      </TouchableHighlight>
-      <View style={styles.seperator}></View>
+        </TouchableHighlight>
+        <View style={styles.seperator}></View>
       </View>
     )
   }
@@ -65,11 +61,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  arrowText:{
+    fontSize: 25,
+    color: 'white',
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+  },
+
   container: {
+    flex: 1,
     backgroundColor: '#251351',
     overflow: 'visible',
     padding: 7,
     borderRadius: 10,
+  },
+
+  firstRow: {
+    flexDirection: 'row',
+    display: 'flex',
   },
 
   seperator: {
@@ -79,7 +88,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     color: '#ffffff',
-    lineHeight: 20
   },
 
   center: {
