@@ -19,7 +19,7 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import DropdownAlert from 'react-native-dropdownalert';
 
-import { checkToken, setAccessToken, getAccessToken, setApiInformation, 
+import { checkToken, setAccessToken, getAccessToken, setApiInformation,
          getApiInformation, setPushToken, getPushToken, setPassword, getUsernameAndPassword } from './Api';
 
 
@@ -53,7 +53,7 @@ const Nav = StackNavigator({
   TabBar: {
     screen: TabNavigation,
     navigationOptions: {
-      headerTitle: "Orders",
+      headerTitle: "Libera",
       headerLeft: null,
     }
   },
@@ -146,7 +146,7 @@ export default class App extends Component {
       });
     }
     else{
-      var navigateAction = NavigationActions.reset({ 
+      var navigateAction = NavigationActions.reset({
         index: 0,
         key: this.navigator.key,
         actions: [
@@ -159,7 +159,7 @@ export default class App extends Component {
   };
 
   _navigateToLogin = () => {
-    const navigateAction = NavigationActions.reset({ 
+    const navigateAction = NavigationActions.reset({
       index: 0,
       key: this.navigator.key,
       actions: [

@@ -92,7 +92,7 @@ export default class OrderIndex extends Component {
         // data={this.state.orders}
         // keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
-        renderSectionHeader={({section}) => <Text>{section.title}</Text>}
+        renderSectionHeader={({section}) => <Text style={{fontWeight: "800", fontSize: 26, marginBottom: "2%"}}>{section.title}</Text>}
         sections={[{ data: this.state.orders.orders_in_delivery, title: "Current Order" }, { data: this.state.orders.orders_in_queue, title: "Queued Orders" }]}
         refreshing={this.state.refresh}
         onRefresh={ () => this._refreshPage() }
