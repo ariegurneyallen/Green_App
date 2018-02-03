@@ -121,14 +121,14 @@ export default class OrderIndex extends Component {
 
   _renderUpdateOrderButton = (status) => {
 
-    
+
     if(status == "delivery_in_progress"){
       return(
         <View>
           <Button block primary style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("delivered") } >
             <Text style={{ color: '#ffffff', fontSize: 15}}>{"Finish Order"}</Text>
           </Button>
-          <Button block danger style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("cancelled") } >
+          <Button block bordered danger style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("cancelled") } >
             <Text style={{ color: 'red', fontSize: 15}}>{"Cancel Order"}</Text>
           </Button>
         </View>
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
   titleView: {
     borderBottomColor: '#bbb',
 
-  },  
+  },
   comments: {
     marginBottom: 10,
   },
