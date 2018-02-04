@@ -35,7 +35,7 @@ export default class IconTextListing extends Component {
       <View style={styles.information}> 
         {icon}
         <View style={styles.informationTextView}>
-          <View style={styles.textLeftView}>
+          <View>
             <Text style={styles.informationText}> 
               {this.props.text} 
             </Text>

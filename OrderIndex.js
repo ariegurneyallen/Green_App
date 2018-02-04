@@ -89,7 +89,6 @@ export default class OrderIndex extends Component {
   render() {
     var orders = this.state.orders ?
       <SectionList
-        // data={this.state.orders}
         // keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
         renderSectionHeader={({section}) => <Text style={{fontWeight: "800", fontSize: 26, marginBottom: "2%"}}>{section.title}</Text>}

@@ -179,16 +179,31 @@ export default class OrderIndex extends Component {
       <Text style={styles.comments}>{this.state.order.comment}</Text> : null
     var commentsText = (this.state.order && this.state.order.comment) ? this.state.order.comment : ""
     var updateOrderButton = (this.state.order) ? this._renderUpdateOrderButton(this.state.order.status) : null
+    if(this.state.order && this.state.driverLatitude && this.state.order.latitude){
+      var latDistance =  this.state.driverLatitude - this.state.order.latitude
+      var longDistance = this.state.driverLongitude - this.state.order.longitude
+      var delta = Math.abs(latDistance) + Math.abs(longDistance)
+    }
+    else{
+      var delta = 1
+    }
     var maps = this.state.order && this.state.order.latitude ?
+
       <MapView style={styles.map}
           provider={PROVIDER_GOOGLE}
           showsUserLocation={true}
           followsUserLocation={true}
+          zoomEnabled={false}
+          rotateEnabled={false}
+          scrollEnabled={false}
+          pitchEnabled={false}
+          moveOnMarkerPress={false}
+          moveon
           region={{
             latitude: this.state.driverLatitude,
             longitude: this.state.driverLongitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: delta,
+            longitudeDelta: delta,
           }}
         >
           <MapView.Marker
@@ -200,7 +215,7 @@ export default class OrderIndex extends Component {
           />
         </MapView> : null
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.titleView}>
           <Text style={styles.title}> {"Order #" + id} </Text>
         </View>
@@ -258,8 +273,8 @@ export default class OrderIndex extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    flex: 1
   },
   mapView: {
     flex: 1,
@@ -290,9 +305,9 @@ const styles = StyleSheet.create({
   },
   infoView: {
     backgroundColor: 'white',
-     borderBottomColor: '#bbb',
+    borderBottomColor: '#bbb',
     // borderTopColor: '#bbb',
-     borderBottomWidth: 1,
+    borderBottomWidth: 1,
     // borderTopWidth: 1,
     paddingTop: 3,
     marginHorizontal: 8,
