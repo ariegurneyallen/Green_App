@@ -14,7 +14,7 @@ import {
 
 } from 'react-native';
 
-import { Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import IconTextListing from './IconTextListing';
@@ -121,15 +121,15 @@ export default class OrderIndex extends Component {
 
   _renderUpdateOrderButton = (status) => {
 
-    
+
     if(status == "delivery_in_progress"){
       return(
         <View>
           <Button block primary style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("delivered") } >
             <Text style={{ color: '#ffffff', fontSize: 15}}>{"Finish Order"}</Text>
           </Button>
-          <Button block danger style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("cancelled") } >
-            <Text style={{ color: '#ffffff', fontSize: 15}}>{"Cancel Order"}</Text>
+          <Button block bordered danger style={styles.buttonz} onPress={ () => this._onClickUpdateOrderButton("cancelled") } >
+            <Text style={{ color: '#ca5b54', fontSize: 15}}>{"Cancel Order"}</Text>
           </Button>
         </View>
       )
@@ -167,12 +167,12 @@ export default class OrderIndex extends Component {
       )
     }) : null
     var callButton = (this.state.order && this.state.order.phone_number) ?
-      (<Button
+      (<Button block bordered primary style={styles.buttonz}
         onPress={this._callPatient}
         title='Call patient'
         containerViewStyle={{width: '80%', marginLeft: 25}}
       >
-        <Text>Call Patient</Text>
+        <Text style={{ color: '#2d7bf7'}}>Call Patient</Text>
       </Button>
     ) : null
     var comments = (this.state.order && this.state.order.comment) ?
@@ -239,23 +239,23 @@ export default class OrderIndex extends Component {
             {maps}
             <IconTextListing text={address} />
 
-            <Button block style={styles.buttonz}
+            <Button block bordered primary style={styles.buttonz}
               onPress={this._getDirections}
               title='Get directions'
               containerViewStyle={{width: '80%', marginLeft: 25}}
             >
-                <Text>Get Directions</Text>
+                <Text style={{ color: '#2d7bf7'}}>Get Directions</Text>
             </Button>
           </View>
         </View>
         <Text style={styles.sectionTitle}> Comments </Text>
         <View style={styles.infoView}>
           {comments}
-          <Button block style={styles.buttonz}
+          <Button block bordered primary style={styles.buttonz}
             onPress={ () => this.setState( {showPrompt: true}) }
             containerViewStyle={{width: '80%', marginLeft: 25}}
           >
-          <Text>{comments ? "Edit Comment" : "Add Comment"}</Text>
+          <Text style={{ color: '#2d7bf7'}}>{comments ? "Edit Comment" : "Add Comment"}</Text>
           </Button>
         </View>
         <Prompt
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
   titleView: {
     borderBottomColor: '#bbb',
 
-  },  
+  },
   comments: {
     marginBottom: 10,
   },
